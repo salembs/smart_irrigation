@@ -1,0 +1,8 @@
+C:/Users/salem/Downloads/slave_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/Core/Src/usart_if.c:103:25:vcom_Init	8	static
+C:/Users/salem/Downloads/slave_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/Core/Src/usart_if.c:117:25:vcom_DeInit	8	static
+C:/Users/salem/Downloads/slave_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/Core/Src/usart_if.c:151:25:vcom_Trace_DMA	8	static
+C:/Users/salem/Downloads/slave_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/Core/Src/usart_if.c:163:25:vcom_ReceiveInit	24	static
+C:/Users/salem/Downloads/slave_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/Core/Src/usart_if.c:140:6:vcom_Trace	8	static
+C:/Users/salem/Downloads/slave_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/Core/Src/usart_if.c:199:6:vcom_Resume	8	static
+C:/Users/salem/Downloads/slave_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/Core/Src/usart_if.c:220:6:HAL_UART_TxCpltCallback	8	static
+C:/Users/salem/Downloads/slave_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/Core/Src/usart_if.c:232:6:HAL_UART_RxCpltCallback	16	static

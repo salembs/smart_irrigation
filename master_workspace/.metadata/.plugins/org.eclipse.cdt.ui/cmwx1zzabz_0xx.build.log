@@ -1,0 +1,21 @@
+10:44:32 **** Incremental Build of configuration Debug for project cmwx1zzabz_0xx ****
+make all 
+arm-none-eabi-gcc "C:/Users/salem/Downloads/master_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/SubGHz_Phy/App/subghz_phy_app.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DSTM32L072xx -DCMWX1ZZABZ0XX -c -I../../../SubGHz_Phy/App -I"C:/Users/salem/Downloads/master_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/STM32CubeIDE/cmwx1zzabz_0xx/Middlewares/Third_Party/FatFs/src" -I"C:/Users/salem/Downloads/master_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/STM32CubeIDE/cmwx1zzabz_0xx/FATFS/Target" -I"C:/Users/salem/Downloads/master_workspace/STM32CubeExpansion_LRWAN_V2.1.0/Projects/B-L072Z-LRWAN1/Applications/SubGHz_Phy/SubGHz_Phy_PingPong/STM32CubeIDE/cmwx1zzabz_0xx/FATFS/App" -I../../../SubGHz_Phy/Target -I../../../Core/Inc -I../../../../../../../../Utilities/misc -I../../../../../../../../Utilities/timer -I../../../../../../../../Utilities/trace/adv_trace -I../../../../../../../../Utilities/lpm/tiny_lpm -I../../../../../../../../Utilities/sequencer -I../../../../../../../../Drivers/BSP/B-L072Z-LRWAN1 -I../../../../../../../../Drivers/BSP/CMWX1ZZABZ_0xx -I../../../../../../../../Drivers/STM32L0xx_HAL_Driver/Inc -I../../../../../../../../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../../../../../../../../Drivers/CMSIS/Include -I../../../../../../../../Middlewares/Third_Party/SubGHz_Phy -I../../../../../../../../Middlewares/Third_Party/SubGHz_Phy/sx1276 -Os -ffunction-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Application/App/subghz_phy_app.d" -MT"Application/App/subghz_phy_app.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Application/App/subghz_phy_app.o"
+arm-none-eabi-gcc -o "cmwx1zzabz_0xx.elf" @"objects.list"   -mcpu=cortex-m0plus -T"../STM32L072CZTx_FLASH.ld" --specs=nosys.specs -Wl,-Map="cmwx1zzabz_0xx.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: cmwx1zzabz_0xx.elf has a LOAD segment with RWX permissions
+Finished building target: cmwx1zzabz_0xx.elf
+ 
+arm-none-eabi-size  cmwx1zzabz_0xx.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29840	    156	   4428	  34424	   8678	cmwx1zzabz_0xx.elf
+Finished building: default.size.stdout
+ 
+arm-none-eabi-objdump -h -S cmwx1zzabz_0xx.elf  > "cmwx1zzabz_0xx.list"
+Finished building: cmwx1zzabz_0xx.list
+ 
+arm-none-eabi-objcopy  -O binary cmwx1zzabz_0xx.elf  "cmwx1zzabz_0xx.bin"
+Finished building: cmwx1zzabz_0xx.bin
+ 
+
+10:44:33 Build Finished. 0 errors, 1 warnings. (took 1s.59ms)
+

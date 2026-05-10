@@ -1,0 +1,989 @@
+2026-05-10 19:18:26,779 [INFO] Activator:176 - 
+
+
+2026-05-10 19:18:26,779 [INFO] Activator:177 - !SESSION log4j initialized
+2026-05-10 19:18:32,051 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2026-05-10 19:18:40,508 [INFO] ApplicationProperties:184 - Using Application install path: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515
+2026-05-10 19:18:40,526 [INFO] DbMcusXml:78 - Set database path to: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\\db\/mcu/
+2026-05-10 19:18:40,526 [INFO] ApiDb:274 - Set plugin database path to: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\\db\/plugins/boardmanager/
+2026-05-10 19:18:40,526 [WARN] ApiDb:259 - Overriding images path with different value:  => C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\\db\/plugins/mcufinder/images/
+2026-05-10 19:18:40,540 [INFO] ApiDb:250 - Set database path to: C:\Users\salem\.stmcufinder\plugins\mcufinder//mcu/
+2026-05-10 19:18:40,541 [INFO] DbMcusAds:125 - Set database path to: C:\Users\salem\.stmcufinder\plugins\mcufinder//mcu/
+2026-05-10 19:18:40,543 [INFO] CrossReferenceDbSqlite:203 - Set database path to: C:\Users\salem\.stmcufinder\plugins\mcufinder//mcu/cs/
+2026-05-10 19:18:40,633 [INFO] RulesReader:64 - Compatibility file has been processed (302 Rules)
+2026-05-10 19:18:40,698 [INFO] DbMcusXml:78 - Set database path to: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\\db\/mcu/
+2026-05-10 19:18:40,698 [INFO] ApiDb:274 - Set plugin database path to: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\\db\/plugins/boardmanager/
+2026-05-10 19:18:40,698 [INFO] ApiDb:261 - Set plugin images path to: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\\db\/plugins/mcufinder/images/
+2026-05-10 19:18:40,698 [WARN] DbFile:41 - Overriding database path with different value: C:\Users\salem\.stmcufinder\plugins\mcufinder/ => C:\Users\salem\.stmcufinder\plugins\mcufinder
+2026-05-10 19:18:40,698 [INFO] ApiDb:250 - Set database path to: C:\Users\salem\.stmcufinder\plugins\mcufinder//mcu/
+2026-05-10 19:18:40,698 [WARN] DbFile:41 - Overriding database path with different value: C:\Users\salem\.stmcufinder\plugins\mcufinder/ => C:\Users\salem\.stmcufinder\plugins\mcufinder
+2026-05-10 19:18:40,698 [INFO] DbMcusAds:125 - Set database path to: C:\Users\salem\.stmcufinder\plugins\mcufinder//mcu/
+2026-05-10 19:18:40,698 [WARN] DbFile:41 - Overriding database path with different value: C:\Users\salem\.stmcufinder\plugins\mcufinder/ => C:\Users\salem\.stmcufinder\plugins\mcufinder
+2026-05-10 19:18:40,698 [WARN] DbFile:41 - Overriding database path with different value: C:\Users\salem\.stmcufinder\plugins\mcufinder/ => C:\Users\salem\.stmcufinder\plugins\mcufinder
+2026-05-10 19:18:40,698 [INFO] CrossReferenceDbSqlite:203 - Set database path to: C:\Users\salem\.stmcufinder\plugins\mcufinder//mcu/cs/
+2026-05-10 19:18:40,764 [INFO] MainPanel:272 - HeapMemory: 268435456
+2026-05-10 19:18:40,858 [INFO] DbMcusXml:78 - Set database path to: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\\db\/mcu/
+2026-05-10 19:18:40,858 [INFO] ApiDb:274 - Set plugin database path to: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\\db\/plugins/boardmanager/
+2026-05-10 19:18:40,858 [INFO] ApiDb:261 - Set plugin images path to: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\\db\/plugins/mcufinder/images/
+2026-05-10 19:18:40,858 [WARN] DbFile:41 - Overriding database path with different value: C:\Users\salem\.stmcufinder\plugins\mcufinder/ => C:\Users\salem\.stmcufinder\plugins\mcufinder
+2026-05-10 19:18:40,858 [INFO] ApiDb:250 - Set database path to: C:\Users\salem\.stmcufinder\plugins\mcufinder//mcu/
+2026-05-10 19:18:40,858 [WARN] DbFile:41 - Overriding database path with different value: C:\Users\salem\.stmcufinder\plugins\mcufinder/ => C:\Users\salem\.stmcufinder\plugins\mcufinder
+2026-05-10 19:18:40,858 [INFO] DbMcusAds:125 - Set database path to: C:\Users\salem\.stmcufinder\plugins\mcufinder//mcu/
+2026-05-10 19:18:40,858 [WARN] DbFile:41 - Overriding database path with different value: C:\Users\salem\.stmcufinder\plugins\mcufinder/ => C:\Users\salem\.stmcufinder\plugins\mcufinder
+2026-05-10 19:18:40,858 [WARN] DbFile:41 - Overriding database path with different value: C:\Users\salem\.stmcufinder\plugins\mcufinder/ => C:\Users\salem\.stmcufinder\plugins\mcufinder
+2026-05-10 19:18:40,858 [INFO] CrossReferenceDbSqlite:203 - Set database path to: C:\Users\salem\.stmcufinder\plugins\mcufinder//mcu/cs/
+2026-05-10 19:18:40,873 [INFO] ApplicationProperties:184 - Using Application install path: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515
+2026-05-10 19:18:40,875 [INFO] PluginManage:196 - Search for loadable plugins [exclusion list=, ]
+2026-05-10 19:18:40,876 [INFO] PluginManage:310 - Check plugin analytics
+2026-05-10 19:18:46,087 [INFO] AnalyticsPlugin:253 - Accepted Software Licenses: STM32CubeMX.6.13.0
+2026-05-10 19:18:46,088 [INFO] AnalyticsPlugin:255 - Accepted CMSIS Pack Licenses: 
+2026-05-10 19:18:46,088 [INFO] AnalyticsPlugin:257 - Accepted Firmware Licenses: FW.F4.1.28.0,FW.C0.1.3.0,FW.C0.1.4.0
+2026-05-10 19:18:46,090 [INFO] PluginManage:359 - Loaded plugin analytics (category:tool,tabindex:-1)
+2026-05-10 19:18:46,090 [INFO] PluginManage:310 - Check plugin cadmodel
+2026-05-10 19:18:46,106 [INFO] CADModel:105 - Init CAD model plugin
+2026-05-10 19:18:46,106 [INFO] PluginManage:359 - Loaded plugin cadmodel (category:power,tabindex:5)
+2026-05-10 19:18:46,106 [INFO] PluginManage:310 - Check plugin clock
+2026-05-10 19:18:46,123 [INFO] PluginManage:359 - Loaded plugin clock (category:base,tabindex:2)
+2026-05-10 19:18:46,123 [INFO] PluginManage:310 - Check plugin ddr
+2026-05-10 19:18:46,126 [INFO] PluginManage:359 - Loaded plugin ddr (category:tool,tabindex:6)
+2026-05-10 19:18:46,127 [INFO] PluginManage:310 - Check plugin filemanager
+2026-05-10 19:18:46,254 [INFO] PluginManage:359 - Loaded plugin filemanager (category:base,tabindex:10)
+2026-05-10 19:18:46,254 [INFO] PluginManage:310 - Check plugin ipmanager
+2026-05-10 19:18:46,259 [INFO] PluginManage:359 - Loaded plugin ipmanager (category:base,tabindex:5)
+2026-05-10 19:18:46,259 [INFO] PluginManage:310 - Check plugin lpbam
+2026-05-10 19:18:46,275 [INFO] PluginManage:359 - Loaded plugin lpbam (category:base,tabindex:0)
+2026-05-10 19:18:46,275 [INFO] PluginManage:310 - Check plugin memorymap
+2026-05-10 19:18:46,294 [INFO] PluginManage:359 - Loaded plugin memorymap (category:base,tabindex:4)
+2026-05-10 19:18:46,295 [INFO] PluginManage:310 - Check plugin pinoutandconfiguration
+2026-05-10 19:18:46,311 [INFO] PluginManage:359 - Loaded plugin pinoutandconfiguration (category:base,tabindex:1)
+2026-05-10 19:18:46,311 [INFO] PluginManage:310 - Check plugin pinoutconfig
+2026-05-10 19:18:46,390 [WARN] SupportedApi:132 - Cannot load RTOS API schema: s4s-elt-must-match.1: The content of 'definitions' must match (annotation?, (simpleType | complexType)?, (unique | key | keyref)*)). A problem was found starting at: attribute.
+2026-05-10 19:18:46,507 [INFO] PluginManage:359 - Loaded plugin pinoutconfig (category:base,tabindex:0)
+2026-05-10 19:18:46,507 [INFO] PluginManage:310 - Check plugin power
+2026-05-10 19:18:46,525 [INFO] PluginManage:359 - Loaded plugin power (category:power,tabindex:4)
+2026-05-10 19:18:46,525 [INFO] PluginManage:310 - Check plugin projectmanager
+2026-05-10 19:18:46,536 [INFO] PluginManage:359 - Loaded plugin projectmanager (category:projectmanager,tabindex:4)
+2026-05-10 19:18:46,537 [INFO] PluginManage:310 - Check plugin rif
+2026-05-10 19:18:46,551 [INFO] PluginManage:359 - Loaded plugin rif (category:base,tabindex:3)
+2026-05-10 19:18:46,551 [INFO] PluginManage:310 - Check plugin thirdparty
+2026-05-10 19:18:46,801 [INFO] PluginManage:359 - Loaded plugin thirdparty (category:base,tabindex:-1)
+2026-05-10 19:18:46,801 [WARN] IntegrityCheckThread:84 - waiting for thirdparty lock release [integrity check]
+2026-05-10 19:18:46,801 [INFO] IntegrityCheckThread:86 - entering critical section [integrity check]
+2026-05-10 19:18:46,801 [INFO] PluginManage:310 - Check plugin tools
+2026-05-10 19:18:46,801 [INFO] ThirdPartyUpdaterWithRetryManager:70 - Updater plugin not ready yet. [1/15]
+2026-05-10 19:18:46,836 [INFO] PluginManage:359 - Loaded plugin tools (category:base,tabindex:7)
+2026-05-10 19:18:46,836 [INFO] PluginManage:310 - Check plugin tutovideos
+2026-05-10 19:18:46,993 [INFO] PluginManage:359 - Loaded plugin tutovideos (category:base,tabindex:-1)
+2026-05-10 19:18:46,993 [INFO] PluginManage:310 - Check plugin updater
+2026-05-10 19:18:47,011 [INFO] PluginManage:359 - Loaded plugin updater (category:base,tabindex:12)
+2026-05-10 19:18:47,011 [INFO] PluginManage:310 - Check plugin userauth
+2026-05-10 19:18:47,016 [INFO] UserAuth:118 - Init User Auth plugin
+2026-05-10 19:18:47,017 [INFO] PluginManage:359 - Loaded plugin userauth (category:base,tabindex:14)
+2026-05-10 19:18:47,017 [INFO] PluginManage:283 - PluginManage : Loaded plugins [18]
+2026-05-10 19:18:47,199 [INFO] PinOutPanel:1589 - setPackage(No Configuration,No Configuration)
+2026-05-10 19:18:47,267 [INFO] CADModel:165 - CPN selected for project level
+2026-05-10 19:18:47,267 [INFO] CADModel:114 - Register for checkConnection events
+2026-05-10 19:18:47,296 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,296 [INFO] PluginManager:220 - loadIPPluginJar : add adc
+2026-05-10 19:18:47,333 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,334 [INFO] PluginManager:220 - loadIPPluginJar : add aes
+2026-05-10 19:18:47,377 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,377 [INFO] PluginManager:220 - loadIPPluginJar : add can
+2026-05-10 19:18:47,403 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,403 [INFO] PluginManager:220 - loadIPPluginJar : add comp
+2026-05-10 19:18:47,436 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,437 [INFO] PluginManager:220 - loadIPPluginJar : add cryp
+2026-05-10 19:18:47,449 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,449 [INFO] PluginManager:220 - loadIPPluginJar : add ddr_ctrl_phy
+2026-05-10 19:18:47,479 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,479 [INFO] PluginManager:220 - loadIPPluginJar : add dfsdm
+2026-05-10 19:18:47,493 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,493 [INFO] PluginManager:220 - loadIPPluginJar : add dma
+2026-05-10 19:18:47,527 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,528 [INFO] PluginManager:220 - loadIPPluginJar : add dma3
+2026-05-10 19:18:47,566 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,566 [INFO] PluginManager:220 - loadIPPluginJar : add extmemmanager
+2026-05-10 19:18:47,586 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,586 [INFO] PluginManager:220 - loadIPPluginJar : add fatfs
+2026-05-10 19:18:47,626 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,626 [INFO] PluginManager:220 - loadIPPluginJar : add fmc
+2026-05-10 19:18:47,639 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,639 [INFO] PluginManager:220 - loadIPPluginJar : add freertos
+2026-05-10 19:18:47,660 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,660 [INFO] PluginManager:220 - loadIPPluginJar : add genericplugin
+2026-05-10 19:18:47,738 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,738 [INFO] PluginManager:220 - loadIPPluginJar : add gfxmmu
+2026-05-10 19:18:47,847 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,847 [INFO] PluginManager:220 - loadIPPluginJar : add gic
+2026-05-10 19:18:47,858 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,858 [INFO] PluginManager:220 - loadIPPluginJar : add gpio
+2026-05-10 19:18:47,934 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,934 [INFO] PluginManager:220 - loadIPPluginJar : add gtzc
+2026-05-10 19:18:47,963 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:47,963 [INFO] PluginManager:220 - loadIPPluginJar : add hash
+2026-05-10 19:18:48,012 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,012 [INFO] PluginManager:220 - loadIPPluginJar : add i2c
+2026-05-10 19:18:48,045 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,045 [INFO] PluginManager:220 - loadIPPluginJar : add i2s
+2026-05-10 19:18:48,081 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,081 [INFO] PluginManager:220 - loadIPPluginJar : add i3c
+2026-05-10 19:18:48,162 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,162 [INFO] PluginManager:220 - loadIPPluginJar : add ipddr
+2026-05-10 19:18:48,240 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,240 [INFO] PluginManager:220 - loadIPPluginJar : add linkedlist
+2026-05-10 19:18:48,273 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,274 [INFO] PluginManager:220 - loadIPPluginJar : add lorawan
+2026-05-10 19:18:48,305 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,305 [INFO] PluginManager:220 - loadIPPluginJar : add ltdc
+2026-05-10 19:18:48,317 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,317 [INFO] PluginManager:220 - loadIPPluginJar : add mdma
+2026-05-10 19:18:48,329 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,329 [INFO] PluginManager:220 - loadIPPluginJar : add nvic
+2026-05-10 19:18:48,363 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,364 [INFO] PluginManager:220 - loadIPPluginJar : add opamp
+2026-05-10 19:18:48,417 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,417 [INFO] PluginManager:220 - loadIPPluginJar : add openamp
+2026-05-10 19:18:48,455 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,456 [INFO] PluginManager:220 - loadIPPluginJar : add pdm2pcm
+2026-05-10 19:18:48,469 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,470 [INFO] PluginManager:220 - loadIPPluginJar : add plateformsettings
+2026-05-10 19:18:48,491 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,491 [INFO] PluginManager:220 - loadIPPluginJar : add quadspi
+2026-05-10 19:18:48,514 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,515 [INFO] PluginManager:220 - loadIPPluginJar : add radio
+2026-05-10 19:18:48,526 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,526 [INFO] PluginManager:220 - loadIPPluginJar : add resmgrutility
+2026-05-10 19:18:48,568 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,568 [INFO] PluginManager:220 - loadIPPluginJar : add sai
+2026-05-10 19:18:48,600 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,600 [INFO] PluginManager:220 - loadIPPluginJar : add spi
+2026-05-10 19:18:48,665 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,665 [INFO] PluginManager:220 - loadIPPluginJar : add stm32_wpan
+2026-05-10 19:18:48,686 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,686 [INFO] PluginManager:220 - loadIPPluginJar : add tim
+2026-05-10 19:18:48,737 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,737 [INFO] PluginManager:220 - loadIPPluginJar : add touchsensing
+2026-05-10 19:18:48,758 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,758 [INFO] PluginManager:220 - loadIPPluginJar : add tracer_emb
+2026-05-10 19:18:48,779 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,779 [INFO] PluginManager:220 - loadIPPluginJar : add ts
+2026-05-10 19:18:48,800 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,800 [INFO] PluginManager:220 - loadIPPluginJar : add tsc
+2026-05-10 19:18:48,821 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,821 [INFO] PluginManager:220 - loadIPPluginJar : add ucpd
+2026-05-10 19:18:48,860 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,860 [INFO] PluginManager:220 - loadIPPluginJar : add usart
+2026-05-10 19:18:48,904 [INFO] IPUIPlugin:80 - create IPUIPlugin
+2026-05-10 19:18:48,904 [INFO] PluginManager:220 - loadIPPluginJar : add usbx
+2026-05-10 19:18:49,017 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,043 [INFO] RulesReader:64 - Compatibility file has been processed (302 Rules)
+2026-05-10 19:18:49,050 [INFO] RulesReader:64 - Compatibility file has been processed (302 Rules)
+2026-05-10 19:18:49,060 [INFO] CADModel:165 - CPN selected for project level
+2026-05-10 19:18:49,060 [INFO] CADModel:114 - Register for checkConnection events
+2026-05-10 19:18:49,060 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,060 [ERROR] CADModel:125 - Updater not yet initialized, retry later 
+2026-05-10 19:18:49,186 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,189 [INFO] CADModel:165 - CPN selected for project level
+2026-05-10 19:18:49,189 [INFO] CADModel:114 - Register for checkConnection events
+2026-05-10 19:18:49,189 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,189 [ERROR] CADModel:125 - Updater not yet initialized, retry later 
+2026-05-10 19:18:49,193 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,295 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,304 [INFO] DbMcusAds:53 - JSON generation date=Mon Apr 27 09:14:29 CET 2026 (1777277669577)
+2026-05-10 19:18:49,305 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,330 [WARN] DetailPanel:346 - Failed to get advertising image, set to default
+2026-05-10 19:18:49,483 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,485 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,485 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,485 [WARN] DetailPanel:346 - Failed to get advertising image, set to default
+2026-05-10 19:18:49,485 [FATAL] Updater:351 - Updater called before beeing initialized
+2026-05-10 19:18:49,528 [ERROR] Updater:1198 - MainUpdater not yet initialized. External WinMGr cannot be set.
+2026-05-10 19:18:49,537 [INFO] Updater:1134 - Updater Version found : 6.14.1
+2026-05-10 19:18:49,551 [INFO] ApplicationProperties:184 - Using Application install path: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515
+2026-05-10 19:18:49,803 [INFO] ThirdPartyUpdaterWithRetryManager:70 - Updater plugin not ready yet. [2/15]
+2026-05-10 19:18:50,408 [INFO] MainUpdater:2872 - connection check result : 10
+2026-05-10 19:18:50,409 [INFO] MainUpdater:289 - Updater Check For Update Now.
+2026-05-10 19:18:50,409 [INFO] MicroXplorer:498 - Change Database Version : DB.6.0.141
+2026-05-10 19:18:50,441 [INFO] McuFinderGlobals:63 - Set McuFinder mode to 2 (CubeIDE integrated)
+2026-05-10 19:18:50,447 [INFO] UserAuth:484 - Internet connection configuration mode: 1
+2026-05-10 19:18:50,480 [INFO] JxBrowserEngine:152 - Initiate JxBrowser Engine with user profile folder
+2026-05-10 19:18:50,611 [INFO] CheckServerUpdateThread:120 - End of CheckServer Thread
+2026-05-10 19:18:51,996 [INFO] WebApp:169 - Instantiating new browser for Auth
+2026-05-10 19:18:52,646 [INFO] WebApp:463 - Apply proxy settings
+2026-05-10 19:18:52,647 [INFO] WebApp:548 - Chromium requires no authentication
+2026-05-10 19:18:52,659 [INFO] WebApp:491 - Direct internet connection detected
+2026-05-10 19:18:52,691 [INFO] WebApp:894 - Register for checkConnection events
+2026-05-10 19:18:52,692 [INFO] WebApp:463 - Apply proxy settings
+2026-05-10 19:18:52,692 [INFO] WebApp:548 - Chromium requires no authentication
+2026-05-10 19:18:52,693 [INFO] WebApp:491 - Direct internet connection detected
+2026-05-10 19:18:52,855 [INFO] WebApp:225 - Starting web application
+2026-05-10 19:18:52,855 [INFO] WebApp:593 - Web application path used C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\db\plugins\mcufinder\reactClient1\index.html
+2026-05-10 19:18:52,989 [INFO] UserAuth:484 - Internet connection configuration mode: 1
+2026-05-10 19:18:53,092 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:18:53,092 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:18:53,112 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-H7.3.5.0
+2026-05-10 19:18:53,127 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.FP-SNS-MOTENVWB1.1.4.0
+2026-05-10 19:18:53,141 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.FP-ATR-ASTRA1.2.0.2
+2026-05-10 19:18:53,152 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.FP-ATR-ASTRA1.2.0.1
+2026-05-10 19:18:53,165 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-SMBUS.2.1.0
+2026-05-10 19:18:53,177 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-WB05N.1.1.0
+2026-05-10 19:18:53,189 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-ST60.1.0.0
+2026-05-10 19:18:53,212 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-F7.1.1.0
+2026-05-10 19:18:53,226 [WARN] PackLoader:240 - Cannot read IP mode file for Cesanta.I-CUBE-Mongoose.7.19.0
+2026-05-10 19:18:53,268 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-MEMS1.11.0.0
+2026-05-10 19:18:53,358 [INFO] WebApp:191 - Connection restablished
+2026-05-10 19:18:53,414 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\STMicroelectronics.FP-SNS-MOTENV1.5.1.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:53,425 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\WES.I-CUBE-Cesium.1.4.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:53,436 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.FP-SNS-FLIGHT1.5.0.2
+2026-05-10 19:18:53,457 [WARN] PackLoader:240 - Cannot read IP mode file for Infineon.AIROC-Wi-Fi-Bluetooth-STM32.1.7.0
+2026-05-10 19:18:53,480 [WARN] PackLoader:240 - Cannot read IP mode file for Infineon.AIROC-Wi-Fi-Bluetooth-STM32.1.7.1
+2026-05-10 19:18:53,509 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-H7.3.4.0
+2026-05-10 19:18:53,527 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-DISPLAY.3.0.0
+2026-05-10 19:18:53,541 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-GNSS1.7.1.1
+2026-05-10 19:18:53,552 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\STMicroelectronics.FP-SNS-MOTENVWB1.1.5.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:53,565 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-BLE1.7.0.0
+2026-05-10 19:18:53,578 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC10.1.0.0
+2026-05-10 19:18:53,594 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-BLEMGR.4.0.0
+2026-05-10 19:18:53,605 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-ST60.1.1.0
+2026-05-10 19:18:53,619 [WARN] PackLoader:240 - Cannot read IP mode file for emotas.I-CUBE-CANOPEN.1.3.0
+2026-05-10 19:18:53,633 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-GNSS1.7.1.0
+2026-05-10 19:18:53,648 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AI.10.0.0
+2026-05-10 19:18:53,661 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\STMicroelectronics.FP-SNS-STBOX1.2.1.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:53,672 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.FP-SNS-SMARTAG2.1.2.0
+2026-05-10 19:18:53,684 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.FP-SNS-FLIGHT1.5.1.0
+2026-05-10 19:18:53,716 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-MEMS1.11.1.0
+2026-05-10 19:18:53,789 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 1 : Invalid condition id : UX_CORESTACK_Condition cause : null
+2026-05-10 19:18:53,790 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 1 : Invalid condition id : UX_CORESTACK_Condition cause : null
+2026-05-10 19:18:53,791 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 1 : Invalid condition id : UX_CORESTACK_Condition cause : null
+2026-05-10 19:18:53,793 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 1 : Invalid condition id : UX_CORESTACK_Condition cause : null
+2026-05-10 19:18:53,793 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 1 : Invalid condition id : UX_CORESTACK_Condition cause : null
+2026-05-10 19:18:53,795 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-WL.2.0.0
+2026-05-10 19:18:53,808 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.FP-SNS-MOTENV1.5.0.0
+2026-05-10 19:18:53,832 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-H7RS.1.2.0
+2026-05-10 19:18:53,848 [WARN] PackLoader:240 - Cannot read IP mode file for wolfSSL.I-CUBE-wolfMQTT.1.19.0
+2026-05-10 19:18:53,864 [WARN] PackLoader:240 - Cannot read IP mode file for WES.I-CUBE-Cesium.1.3.0
+2026-05-10 19:18:53,880 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-BLE2.3.3.0
+2026-05-10 19:18:53,927 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC9.1.0.0
+2026-05-10 19:18:53,940 [WARN] PackLoader:240 - Cannot read IP mode file for wolfSSL.I-CUBE-wolfSSL.5.8.2
+2026-05-10 19:18:53,954 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-BLE1.7.1.0
+2026-05-10 19:18:53,966 [WARN] PackLoader:240 - Cannot read IP mode file for wolfSSL.I-CUBE-wolfMQTT.1.19.2
+2026-05-10 19:18:53,978 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\STMicroelectronics.X-CUBE-FREERTOS.1.4.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:53,991 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-EEPRMA1.5.2.0
+2026-05-10 19:18:54,004 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\STMicroelectronics.X-CUBE-ST67W61.1.1.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:54,015 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AI.10.1.0
+2026-05-10 19:18:54,025 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\STMicroelectronics.FP-SNS-STAIOTCFT.1.1.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:54,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:18:54,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:18:54,060 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-MEMS1.12.0.0
+2026-05-10 19:18:54,157 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-MEMS1.11.2.0
+2026-05-10 19:18:54,227 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-G0.1.1.0
+2026-05-10 19:18:54,240 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-SAFEA1.1.2.2
+2026-05-10 19:18:54,252 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC4.3.0.0
+2026-05-10 19:18:54,271 [WARN] PackLoader:240 - Cannot read IP mode file for EmbeddedOffice.I-CUBE-FS-RTOS.1.0.1
+2026-05-10 19:18:54,283 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-WB05N.2.0.0
+2026-05-10 19:18:54,294 [WARN] PackLoader:240 - Cannot read IP mode file for wolfSSL.I-CUBE-wolfTPM.3.8.0
+2026-05-10 19:18:54,309 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-TCPP.4.2.0
+2026-05-10 19:18:54,322 [WARN] PackLoader:240 - Cannot read IP mode file for RealThread.X-CUBE-RT-Thread_Nano.4.1.1
+2026-05-10 19:18:54,333 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.FP-ATR-SIGFOX1.3.2.0
+2026-05-10 19:18:54,346 [WARN] ConditionMgr:438 - getConditionDescription Invalid condition id : Cortex-A Device cause : null
+2026-05-10 19:18:54,361 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : Cortex-A Device cause : null
+2026-05-10 19:18:54,362 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : Cortex-A Device cause : null
+2026-05-10 19:18:54,362 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : Cortex-A Device cause : null
+2026-05-10 19:18:54,372 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-EEPRMA1.5.1.0
+2026-05-10 19:18:54,382 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\STMicroelectronics.X-CUBE-FREERTOS.1.5.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:54,391 [WARN] PackLoader:240 - Cannot read IP mode file for wolfSSL.I-CUBE-wolfSSL.5.7.4
+2026-05-10 19:18:54,401 [WARN] PackLoader:240 - Cannot read IP mode file for wolfSSL.I-CUBE-wolfSSL.5.7.6
+2026-05-10 19:18:54,413 [WARN] PackLoader:240 - Cannot read IP mode file for ITTIA_DB.I-CUBE-ITTIADB.8.9.0
+2026-05-10 19:18:54,425 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC6.3.2.0
+2026-05-10 19:18:54,439 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-ST67W61.1.0.0
+2026-05-10 19:18:54,449 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AI.10.2.0
+2026-05-10 19:18:54,477 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-MEMS1.12.1.0
+2026-05-10 19:18:54,536 [WARN] PackLoader:240 - Cannot read IP mode file for SEGGER.I-CUBE-embOS.1.3.1
+2026-05-10 19:18:54,561 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-ALGOBUILD.1.4.0
+2026-05-10 19:18:54,595 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-MEMS1.11.3.0
+2026-05-10 19:18:54,702 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AI.9.1.0
+2026-05-10 19:18:54,713 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-PM33A1.1.0.0
+2026-05-10 19:18:54,733 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-F4.1.1.0
+2026-05-10 19:18:54,747 [WARN] PackLoader:240 - Cannot read IP mode file for Avnet-IotConnect.X-CUBE-IoTC-DA16k-PMOD.1.0.0
+2026-05-10 19:18:54,758 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-ISPU.2.1.0
+2026-05-10 19:18:54,769 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\STMicroelectronics.X-CUBE-IPS.3.2.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:54,780 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.eDS-WB_DPC_TT-BIDIR.2.1.1
+2026-05-10 19:18:54,792 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC12.1.0.0
+2026-05-10 19:18:54,812 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-L5.2.0.0
+2026-05-10 19:18:54,827 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC6.3.1.0
+2026-05-10 19:18:54,839 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-DPower.1.2.0
+2026-05-10 19:18:54,850 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.eDS-WB_DPC_VIENNA.1.2.0
+2026-05-10 19:18:54,861 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.eDS-WB_DPC_3PH2L-BIDIR.1.1.1
+2026-05-10 19:18:54,871 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\STMicroelectronics.X-CUBE-ST67W61.1.3.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:54,882 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-FREERTOS.1.3.1
+2026-05-10 19:18:54,893 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-FREERTOS.1.3.0
+2026-05-10 19:18:54,904 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC7.1.0.1
+2026-05-10 19:18:54,917 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-TOUCHGFX.4.26.0
+2026-05-10 19:18:54,927 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-TOUCHGFX.4.26.1
+2026-05-10 19:18:54,939 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.FP-SNS-STAIOTCFT.1.0.0
+2026-05-10 19:18:54,949 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-DPower.1.3.0
+2026-05-10 19:18:54,969 [WARN] ConditionMgr:438 - getConditionDescription Invalid condition id : LAN8742 Phy interface Condition cause : null
+2026-05-10 19:18:54,969 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-L4.2.0.0
+2026-05-10 19:18:54,969 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : LAN8742 Phy interface Condition cause : null
+2026-05-10 19:18:54,969 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : LAN8742 Phy interface Condition cause : null
+2026-05-10 19:18:54,970 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : LAN8742 Phy interface Condition cause : null
+2026-05-10 19:18:54,981 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-SFXS2LP1.4.0.0
+2026-05-10 19:18:54,992 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-WB05N.2.1.0
+2026-05-10 19:18:55,002 [ERROR] Engine:466 - C:\Users\salem\.stm32cubemx\thirdparties\pdsc\STMicroelectronics.X-CUBE-ST67W61.1.2.0.pdsc: PDSC version is not supported
+2026-05-10 19:18:55,019 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-H7.3.3.0
+2026-05-10 19:18:55,036 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-BLEMGR.4.1.0
+2026-05-10 19:18:55,051 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-IPS.3.0.0
+2026-05-10 19:18:55,053 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:18:55,053 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:18:55,071 [WARN] ConditionMgr:438 - getConditionDescription Invalid condition id : UX DEVICE CLASS RTOS Condition cause : null
+2026-05-10 19:18:55,071 [WARN] ConditionMgr:438 - getConditionDescription Invalid condition id : UX DEVICE CLASS RTOS Condition cause : null
+2026-05-10 19:18:55,072 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-WB.2.0.0
+2026-05-10 19:18:55,072 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : UX DEVICE CLASS RTOS Condition cause : null
+2026-05-10 19:18:55,072 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : UX DEVICE CLASS RTOS Condition cause : null
+2026-05-10 19:18:55,072 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : UX DEVICE CLASS RTOS Condition cause : null
+2026-05-10 19:18:55,073 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : UX DEVICE CLASS RTOS Condition cause : null
+2026-05-10 19:18:55,073 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : UX DEVICE CLASS RTOS Condition cause : null
+2026-05-10 19:18:55,083 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-GNSS1.7.0.0
+2026-05-10 19:18:55,094 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-GNSS1.7.0.1
+2026-05-10 19:18:55,106 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-TOUCHGFX.4.25.0
+2026-05-10 19:18:55,118 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.FP-SNS-STBOX1.2.0.0
+2026-05-10 19:18:55,129 [WARN] ConditionMgr:438 - getConditionDescription Invalid condition id : Cortex-A Device cause : null
+2026-05-10 19:18:55,141 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : Cortex-A Device cause : null
+2026-05-10 19:18:55,141 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : Cortex-A Device cause : null
+2026-05-10 19:18:55,141 [WARN] ConditionMgr:1044 - genDependencies : Invalid condition id : Cortex-A Device cause : null
+2026-05-10 19:18:55,154 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-STSE01.2.0.0
+2026-05-10 19:18:55,169 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-SUBG2.5.0.0
+2026-05-10 19:18:55,189 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-H7RS.1.1.0
+2026-05-10 19:18:55,201 [WARN] PackLoader:240 - Cannot read IP mode file for Cesanta.I-CUBE-Mongoose.7.13.0
+2026-05-10 19:18:55,217 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-G4.2.0.0
+2026-05-10 19:18:55,229 [WARN] PackLoader:240 - Cannot read IP mode file for wolfSSL.I-CUBE-wolfSSH.1.4.20
+2026-05-10 19:18:55,239 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC7.2.0.0
+2026-05-10 19:18:55,253 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-IPS.3.1.0
+2026-05-10 19:18:55,267 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-ALS.1.0.2
+2026-05-10 19:18:55,278 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-TOUCHGFX.4.24.2
+2026-05-10 19:18:55,290 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-TOUCHGFX.4.24.1
+2026-05-10 19:18:55,301 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-STSE01.1.0.0
+2026-05-10 19:18:55,311 [WARN] PackLoader:240 - Cannot read IP mode file for wolfSSL.I-CUBE-wolfTPM.3.4.0
+2026-05-10 19:18:55,324 [WARN] PackLoader:240 - Cannot read IP mode file for portGmbH.I-Cube-SoM-uGOAL.1.1.0
+2026-05-10 19:18:55,343 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-H7RS.1.0.0
+2026-05-10 19:18:55,360 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-TOF1.3.4.2
+2026-05-10 19:18:55,381 [WARN] PackLoader:240 - Cannot read IP mode file for STMicroelectronics.X-CUBE-TOF1.3.4.3
+2026-05-10 19:18:55,393 [WARN] PackLoader:240 - Cannot read IP mode file for wolfSSL.I-CUBE-wolfSSH.1.4.17
+2026-05-10 19:18:55,393 [INFO] ThirdParty:978 - Integrity check success = true
+2026-05-10 19:18:55,393 [INFO] IntegrityCheckThread:100 - exiting critical section [integrity check]
+2026-05-10 19:18:55,394 [INFO] IntegrityCheckThread:103 - End integrity checks thread
+2026-05-10 19:18:56,074 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:18:56,074 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:18:57,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:18:57,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:18:58,076 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:18:58,077 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:18:59,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:18:59,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:00,096 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:00,096 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:01,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:01,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:02,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:02,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:03,075 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:03,075 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:04,056 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:04,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:05,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:05,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:06,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:06,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:07,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:07,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:08,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:08,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:09,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:09,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:10,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:10,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:11,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:11,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:12,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:12,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:13,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:13,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:14,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:14,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:15,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:15,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:16,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:16,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:17,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:17,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:18,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:18,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:19,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:19,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:20,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:20,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:21,052 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:21,052 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:22,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:22,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:23,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:23,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:24,078 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:24,079 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:25,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:25,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:26,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:26,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:27,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:27,074 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:28,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:28,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:29,050 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:29,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:30,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:30,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:31,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:31,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:32,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:32,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:33,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:33,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:34,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:34,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:35,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:35,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:36,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:36,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:37,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:37,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:38,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:38,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:39,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:39,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:40,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:40,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:41,076 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:41,076 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:42,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:42,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:43,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:43,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:44,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:44,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:45,081 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:45,081 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:46,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:46,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:47,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:47,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:48,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:48,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:49,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:49,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:50,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:50,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:51,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:51,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:52,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:52,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:53,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:53,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:54,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:54,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:55,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:55,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:56,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:56,055 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:57,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:57,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:58,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:58,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:19:59,050 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:19:59,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:00,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:00,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:01,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:01,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:02,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:02,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:03,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:03,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:04,053 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:04,053 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:05,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:05,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:06,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:06,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:07,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:07,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:08,047 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:08,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:09,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:09,055 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:10,074 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:10,074 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:11,046 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:11,047 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:12,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:12,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:13,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:13,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:14,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:14,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:15,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:15,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:16,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:16,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:17,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:17,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:18,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:18,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:19,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:19,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:20,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:20,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:21,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:21,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:22,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:22,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:23,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:23,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:24,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:24,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:25,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:25,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:26,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:26,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:27,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:27,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:28,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:28,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:29,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:29,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:30,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:30,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:31,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:31,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:32,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:32,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:33,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:33,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:34,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:34,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:35,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:35,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:36,056 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:36,056 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:37,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:37,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:38,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:38,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:39,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:39,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:40,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:40,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:41,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:41,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:42,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:42,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:43,053 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:43,053 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:44,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:44,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:45,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:45,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:46,046 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:46,047 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:47,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:47,055 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:48,046 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:48,046 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:49,056 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:49,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:50,046 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:50,047 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:51,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:51,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:52,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:52,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:53,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:53,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:54,052 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:54,053 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:55,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:55,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:56,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:56,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:57,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:57,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:58,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:58,054 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:20:59,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:20:59,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:00,082 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:00,082 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:01,081 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:01,081 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:02,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:02,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:03,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:03,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:04,056 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:04,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:05,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:05,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:06,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:06,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:07,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:07,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:08,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:08,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:09,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:09,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:10,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:10,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:11,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:11,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:12,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:12,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:13,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:13,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:14,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:14,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:15,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:15,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:16,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:16,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:17,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:17,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:18,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:18,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:19,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:19,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:20,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:20,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:21,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:21,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:22,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:22,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:23,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:23,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:24,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:24,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:25,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:25,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:26,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:26,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:27,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:27,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:28,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:28,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:29,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:29,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:30,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:30,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:31,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:31,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:32,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:32,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:33,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:33,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:34,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:34,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:35,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:35,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:36,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:36,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:37,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:37,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:38,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:38,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:39,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:39,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:40,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:40,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:41,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:41,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:42,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:42,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:43,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:43,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:44,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:44,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:45,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:45,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:46,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:46,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:47,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:47,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:48,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:48,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:49,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:49,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:50,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:50,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:51,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:51,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:52,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:52,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:53,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:53,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:54,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:54,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:55,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:55,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:56,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:56,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:57,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:57,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:58,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:58,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:21:59,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:21:59,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:00,076 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:00,076 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:01,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:01,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:02,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:02,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:03,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:03,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:04,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:04,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:05,052 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:05,053 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:06,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:06,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:07,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:07,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:08,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:08,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:09,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:09,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:10,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:10,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:11,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:11,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:12,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:12,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:13,076 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:13,077 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:14,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:14,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:15,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:15,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:16,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:16,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:17,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:17,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:18,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:18,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:19,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:19,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:20,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:20,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:21,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:21,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:22,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:22,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:23,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:23,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:24,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:24,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:25,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:25,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:26,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:26,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:27,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:27,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:28,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:28,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:29,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:29,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:30,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:30,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:31,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:31,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:32,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:32,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:33,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:33,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:34,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:34,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:35,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:35,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:36,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:36,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:37,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:37,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:38,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:38,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:39,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:39,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:40,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:40,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:41,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:41,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:42,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:42,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:43,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:43,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:44,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:44,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:45,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:45,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:46,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:46,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:47,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:47,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:48,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:48,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:49,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:49,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:50,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:50,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:51,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:51,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:52,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:52,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:53,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:53,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:54,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:54,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:55,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:55,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:56,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:56,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:57,056 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:57,056 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:58,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:58,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:22:59,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:22:59,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:00,087 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:00,087 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:01,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:01,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:02,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:02,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:03,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:03,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:04,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:04,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:05,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:05,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:06,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:06,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:07,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:07,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:08,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:08,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:09,056 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:09,057 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:10,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:10,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:11,047 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:11,047 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:12,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:12,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:13,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:13,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:14,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:14,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:15,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:15,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:16,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:16,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:17,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:17,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:18,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:18,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:19,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:19,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:20,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:20,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:21,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:21,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:22,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:22,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:23,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:23,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:24,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:24,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:25,047 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:25,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:26,049 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:26,050 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:27,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:27,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:28,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:28,068 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:29,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:29,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:30,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:30,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:31,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:31,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:32,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:32,067 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:33,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:33,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:34,050 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:34,051 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:35,045 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:35,046 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:36,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:36,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:37,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:37,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:38,052 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:38,052 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:39,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:39,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:40,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:40,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:41,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:41,072 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:42,079 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:42,079 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:43,087 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:43,087 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:44,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:44,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:45,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:45,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:46,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:46,058 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:47,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:47,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:48,074 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:48,075 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:49,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:49,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:50,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:50,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:51,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:51,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:52,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:52,069 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:53,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:53,065 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:54,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:54,066 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:55,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:55,064 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:56,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:56,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:57,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:57,073 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:58,080 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:58,080 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:23:59,070 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:23:59,071 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:24:00,085 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:24:00,086 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:24:01,080 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:24:01,080 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:24:02,052 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2026-05-10 19:24:02,053 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2026-05-10 19:24:02,294 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 

@@ -1,0 +1,17 @@
+19:29:26 **** Build of configuration Debug for project pump_with_relay ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L071xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pump_with_relay.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\salem\Downloads\slave_workspace\pump_with_relay\STM32L071CZTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pump_with_relay.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pump_with_relay.elf
+ 
+arm-none-eabi-size  pump_with_relay.elf 
+arm-none-eabi-objdump -h -S pump_with_relay.elf  > "pump_with_relay.list"
+   text	   data	    bss	    dec	    hex	filename
+   5452	     12	   1572	   7036	   1b7c	pump_with_relay.elf
+Finished building: default.size.stdout
+ 
+Finished building: pump_with_relay.list
+ 
+
+19:29:27 Build Finished. 0 errors, 0 warnings. (took 1s.306ms)
+

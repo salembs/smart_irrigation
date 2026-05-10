@@ -1,0 +1,127 @@
+#include "esp32_uart.h"
+#include "stm32_lpm.h"
+#include "stm32_seq.h"
+#include "utilities_def.h"
+#include <string.h>
+
+/* ── Handle ────────────────────────────────────────────────────────────── */
+UART_HandleTypeDef hEsp32Uart;
+
+/* ── Ring buffer ───────────────────────────────────────────────────────── */
+static uint8_t  ringBuffer[ESP32_RING_BUFFER_SIZE];
+static uint16_t ringHead = 0;
+static uint16_t ringTail = 0;
+static uint8_t  rxByte;
+
+/* ── Init ──────────────────────────────────────────────────────────────── */
+void ESP32_UART_Init(void)
+{
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+    ESP32_GPIO_CLK_ENABLE();
+    ESP32_UART_CLK_ENABLE();
+
+    /* TX pin */
+    GPIO_InitStruct.Pin       = ESP32_TX_PIN;
+    GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull      = GPIO_NOPULL;
+    GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_HIGH;
+    GPIO_InitStruct.Alternate = ESP32_TX_AF;
+    HAL_GPIO_Init(ESP32_TX_PORT, &GPIO_InitStruct);
+
+    /* RX pin */
+    GPIO_InitStruct.Pin       = ESP32_RX_PIN;
+    GPIO_InitStruct.Alternate = ESP32_RX_AF;
+    GPIO_InitStruct.Pull      = GPIO_PULLUP;
+    HAL_GPIO_Init(ESP32_RX_PORT, &GPIO_InitStruct);
+
+    /* UART peripheral */
+    hEsp32Uart.Instance          = ESP32_UART;
+    hEsp32Uart.Init.BaudRate     = ESP32_BAUDRATE;
+    hEsp32Uart.Init.WordLength   = UART_WORDLENGTH_8B;
+    hEsp32Uart.Init.StopBits     = UART_STOPBITS_1;
+    hEsp32Uart.Init.Parity       = UART_PARITY_NONE;
+    hEsp32Uart.Init.Mode         = UART_MODE_TX_RX;
+    hEsp32Uart.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
+    hEsp32Uart.Init.OverSampling = UART_OVERSAMPLING_16;
+
+    if (HAL_UART_Init(&hEsp32Uart) != HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    /* NVIC — lower priority than radio interrupts */
+    HAL_NVIC_SetPriority(ESP32_UART_IRQn, 1, 0);
+    HAL_NVIC_EnableIRQ(ESP32_UART_IRQn);
+
+    UTIL_LPM_SetStopMode((1 << CFG_LPM_APPLI_Id), UTIL_LPM_DISABLE); /* ← KEY FIX */
+
+    /* Arm first interrupt RX */
+    HAL_UART_Receive_IT(&hEsp32Uart, &rxByte, 1);
+}
+
+/* ── RX Callback (called from HAL after each byte) ─────────────────────── */
+void ESP32_UART_RxCallback(void)
+{
+    uint16_t nextHead = (ringHead + 1U) % ESP32_RING_BUFFER_SIZE;
+
+    if (nextHead != ringTail)
+    {
+        ringBuffer[ringHead] = rxByte;
+        ringHead = nextHead;
+    }
+
+    /* Notify sequencer */
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_ESP32_Cmd_Process),
+                     CFG_SEQ_Prio_0);
+
+    /* Re-arm for next byte */
+    HAL_UART_Receive_IT(&hEsp32Uart, &rxByte, 1);
+}
+
+/* ── Extract one complete command line from ring buffer ─────────────────── */
+bool ESP32_UART_GetCommand(char *cmd, uint16_t maxLen)
+{
+    uint16_t i     = ringTail;
+    uint16_t len   = 0;
+    bool     found = false;
+
+    while (i != ringHead && len < (maxLen - 1U))
+    {
+        if (ringBuffer[i] == '\n')
+        {
+            found = true;
+            i = (i + 1U) % ESP32_RING_BUFFER_SIZE;
+            break;
+        }
+        cmd[len++] = (char)ringBuffer[i];
+        i = (i + 1U) % ESP32_RING_BUFFER_SIZE;
+    }
+
+    if (found)
+    {
+        if (len > 0 && cmd[len - 1] == '\r')
+            len--;
+
+        cmd[len] = '\0';
+        ringTail = i;
+    }
+
+    return found;
+}
+
+/* ── Send ──────────────────────────────────────────────────────────────── */
+HAL_StatusTypeDef ESP32_UART_Send(const uint8_t *pData, uint16_t size)
+{
+//    HAL_StatusTypeDef status;
+//    UTIL_LPM_SetStopMode((1 << CFG_LPM_APPLI_Id), UTIL_LPM_DISABLE);
+//    status = HAL_UART_Transmit(&hEsp32Uart, (uint8_t *)pData, size, 1000);
+//    UTIL_LPM_SetStopMode((1 << CFG_LPM_APPLI_Id), UTIL_LPM_ENABLE);
+//    return status;
+	return HAL_UART_Transmit(&hEsp32Uart, (uint8_t *)pData, size, 1000);
+}
+
+HAL_StatusTypeDef ESP32_UART_SendString(const char *str)
+{
+    return ESP32_UART_Send((const uint8_t *)str, (uint16_t)strlen(str));
+}

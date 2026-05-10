@@ -1,0 +1,683 @@
+/*!
+ * \file      subghz_phy_app.c
+ *
+ * \brief     MASTER NODE — Clean Master-Slave ACK Architecture
+ *
+ *            Behaviour:
+ *              1. A periodic timer fires every SEND_PERIOD_MS.
+ *              2. Master builds "MSG_<counter>", transmits it.
+ *              3. On TxDone it opens an ACK receive window (RX_TIMEOUT_VALUE ms).
+ *              4a. ACK received  -> update stats, LED flash, sleep until next cycle.
+ *              4b. RX timeout / RX error -> update stats, call SD_SaveMissedPacket(),
+ *                                          sleep until next cycle.
+ *              5. No automatic role-switching, no retry, no PING/PONG strings.
+ *
+ * \note      SD card integration:
+ *              Override the __weak  SD_SaveMissedPacket()  in your own .c file
+ *              (e.g. sd_logger.c) to write the missed packet to your SD card.
+ *              The stub only prints a log line so the project builds without
+ *              an SD driver.
+ *
+ * \copyright Revised BSD License, see section \ref LICENSE.
+ */
+
+/* Includes ------------------------------------------------------------------*/
+#include "platform.h"
+#include "sys_app.h"
+#include "subghz_phy_app.h"
+#include "radio.h"
+#include "app_version.h"
+
+/* USER CODE BEGIN Includes */
+#include "stm32_timer.h"
+#include "stm32_seq.h"
+#include "utilities_def.h"
+#include <string.h>
+#include <stdio.h>
+#include <stdint.h>
+/* USER CODE END Includes */
+
+/* Private defines -----------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+
+/** Maximum size of a LoRa / FSK payload handled by this application. */
+#define MAX_APP_BUFFER_SIZE     255U
+
+#if (PAYLOAD_LEN > MAX_APP_BUFFER_SIZE)
+#error PAYLOAD_LEN must be less or equal than MAX_APP_BUFFER_SIZE
+#endif
+
+/** How long (ms) the Master waits for an ACK before declaring a miss. */
+#define RX_TIMEOUT_VALUE        3000U
+
+/** Radio-level TX watchdog (passed to SetTxConfig). */
+#define TX_TIMEOUT_VALUE        3000U
+
+/** How often the Master sends a packet [ms]. */
+#define SEND_PERIOD_MS          20000U
+
+/** LED heartbeat blink period [ms]. */
+#define LED_PERIOD_MS           200U
+
+/** FSK AFC bandwidth — kept for FSK config block, not used in LoRa mode. */
+#define FSK_AFC_BANDWIDTH       83333U
+
+/** Expected ACK string (must match what the Slave sends). */
+#define ACK_MSG                 "ACK"
+
+/* USER CODE END PD */
+
+/* Private typedefs ----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/**
+ * @brief  Master FSM states.
+ *
+ *         Radio ISR callbacks write to State and then post the sequencer
+ *         task; Master_Process() reads State in the main-loop context.
+ */
+typedef enum
+{
+    MASTER_INIT        = 0, /**< Startup — radio idle, waiting for send timer */
+    MASTER_TX_DONE,         /**< TX succeeded — open ACK RX window            */
+    MASTER_TX_TIMEOUT,      /**< Radio could not finish TX in time             */
+    MASTER_RX_DONE,         /**< A packet arrived in the ACK window            */
+    MASTER_RX_TIMEOUT,      /**< No packet before RX_TIMEOUT_VALUE expired     */
+    MASTER_RX_ERROR,        /**< CRC / demodulation error in the ACK window    */
+} MasterState_t;
+
+/* USER CODE END PTD */
+
+/* Private variables ---------------------------------------------------------*/
+/* USER CODE BEGIN PV */
+
+/** Registered radio event callbacks. */
+static RadioEvents_t RadioEvents;
+
+/**
+ * @brief  Current FSM state.
+ * @note   Written from radio ISR context, read from task context.
+ *         Declared volatile to prevent optimisation issues.
+ */
+static volatile MasterState_t State = MASTER_INIT;
+
+/** Application TX buffer. */
+static uint8_t BufferTx[MAX_APP_BUFFER_SIZE];
+
+/** Application RX buffer. */
+static uint8_t BufferRx[MAX_APP_BUFFER_SIZE];
+
+/** Number of bytes actually received in the last OnRxDone callback. */
+static uint16_t RxBufferSize = 0;
+
+/** RSSI of the last received packet [dBm]. */
+static int16_t RssiValue = 0;
+
+/** SNR of the last received LoRa packet [dB].  0 for FSK (not applicable). */
+static int8_t SnrValue = 0;
+
+/**
+ * @brief  Copy of the message string sent in the current cycle.
+ *         Kept so it can be passed to SD_SaveMissedPacket() on a miss without
+ *         re-building it.
+ */
+static char CurrentMsg[64];
+
+/** Length of CurrentMsg in bytes (excluding NUL terminator). */
+static uint8_t CurrentMsgLen = 0;
+
+/* --- Statistics counters -------------------------------------------------- */
+static uint32_t txCounter   = 0; /**< Total packets transmitted since boot.   */
+static uint32_t ackCounter  = 0; /**< Total ACKs successfully received.       */
+static uint32_t missCounter = 0; /**< Total missed ACKs (timeout + error).    */
+uint8_t sensor_rain_state = 1;
+uint8_t sensor_soil_state = 1;
+
+/* --- Timer objects --------------------------------------------------------- */
+static UTIL_TIMER_Object_t timerLed;  /**< Heartbeat LED blink timer.         */
+static UTIL_TIMER_Object_t sendTimer; /**< Periodic transmit trigger timer.   */
+
+/* USER CODE END PV */
+
+/* Private function prototypes -----------------------------------------------*/
+static void OnTxDone(void);
+static void OnRxDone(uint8_t *payload, uint16_t size,
+                     int16_t rssi, int8_t LoraSnr_FskCfo);
+static void OnTxTimeout(void);
+static void OnRxTimeout(void);
+static void OnRxError(void);
+
+/* USER CODE BEGIN PFP */
+static void Master_Process(void);
+static void SendPacket(void);
+static void SendTimerCallback(void *context);
+static void OnledEvent(void *context);
+/* USER CODE END PFP */
+
+/* ── SD card hook (weak — override in your sd_logger.c) ─────────────────── */
+/**
+ * @brief  Called every time an ACK is NOT received (timeout or RX error).
+ *
+ * @param  msg       Null-terminated payload string of the missed packet
+ *                   (e.g. "MSG_7").
+ * @param  counter   Sequence number of the missed packet (== txCounter).
+ * @param  lastRssi  Last RSSI value known to the Master [dBm].
+ *                   Will be 0 if no packet at all was received this cycle.
+ *
+ * @note   The default implementation only prints a log line.
+ *         Provide your own non-weak version in a separate .c file to write
+ *         to the SD card (e.g. via FatFs or your BSP SD driver).
+ *
+ * Example override in sd_logger.c:
+ * @code
+ *   void SD_SaveMissedPacket(const char *msg, uint32_t counter, int16_t lastRssi)
+ *   {
+ *       char line[128];
+ *       snprintf(line, sizeof(line), "%lu,%s,%d\n", counter, msg, lastRssi);
+ *       SD_WriteToLog(line);   // your FatFs write call
+ *   }
+ * @endcode
+ */
+__weak void SD_SaveMissedPacket(const char *msg,
+                                uint32_t    counter,
+                                int16_t     lastRssi);
+
+/* =========================================================================
+ * Exported functions
+ * ========================================================================= */
+
+void SubghzApp_Init(void)
+{
+    /* USER CODE BEGIN SubghzApp_Init_1 */
+    APP_LOG(TS_OFF, VLEVEL_M, "\r\n==============================\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "        MASTER NODE\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "==============================\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "APP_VERSION= V%X.%X.%X\r\n",
+            (uint8_t)(__APP_VERSION >> __APP_VERSION_MAIN_SHIFT),
+            (uint8_t)(__APP_VERSION >> __APP_VERSION_SUB1_SHIFT),
+            (uint8_t)(__APP_VERSION >> __APP_VERSION_SUB2_SHIFT));
+
+    /* ── LEDs ───────────────────────────────────────────────────────────── */
+    LED_Init(LED_RED1);   /* Heartbeat blink                                  */
+    LED_Init(LED_RED2);   /* Flashes on successful ACK                        */
+
+    UTIL_TIMER_Create(&timerLed, 0xFFFFFFFFU, UTIL_TIMER_ONESHOT,
+                      OnledEvent, NULL);
+    UTIL_TIMER_SetPeriod(&timerLed, LED_PERIOD_MS);
+    UTIL_TIMER_Start(&timerLed);
+    /* USER CODE END SubghzApp_Init_1 */
+
+    /* ── Radio initialisation ───────────────────────────────────────────── */
+    RadioEvents.TxDone    = OnTxDone;
+    RadioEvents.RxDone    = OnRxDone;
+    RadioEvents.TxTimeout = OnTxTimeout;
+    RadioEvents.RxTimeout = OnRxTimeout;
+    RadioEvents.RxError   = OnRxError;
+
+    Radio.Init(&RadioEvents);
+
+    /* USER CODE BEGIN SubghzApp_Init_2 */
+    Radio.SetChannel(RF_FREQUENCY);
+
+#if ((USE_MODEM_LORA == 1) && (USE_MODEM_FSK == 0))
+    APP_LOG(TS_OFF, VLEVEL_M, "Modulation : LoRa\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "Frequency  : %u Hz\r\n",
+            (unsigned long)RF_FREQUENCY);
+    APP_LOG(TS_OFF, VLEVEL_M, "BW         : %d kHz\r\n",
+            (1 << LORA_BANDWIDTH) * 125);
+    APP_LOG(TS_OFF, VLEVEL_M, "SF         : %d\r\n", LORA_SPREADING_FACTOR);
+    APP_LOG(TS_OFF, VLEVEL_M, "CR         : 4/%d\r\n",
+            LORA_CODINGRATE + 4);
+    APP_LOG(TS_OFF, VLEVEL_M, "TX Power   : %d dBm\r\n", TX_OUTPUT_POWER);
+
+    Radio.SetTxConfig(MODEM_LORA,
+                      TX_OUTPUT_POWER, 0,
+                      LORA_BANDWIDTH,
+                      LORA_SPREADING_FACTOR, LORA_CODINGRATE,
+                      LORA_PREAMBLE_LENGTH, LORA_FIX_LENGTH_PAYLOAD_ON,
+                      true,               /* CRC on */
+                      0, 0,               /* freq-hop off */
+                      LORA_IQ_INVERSION_ON,
+                      TX_TIMEOUT_VALUE);
+
+    Radio.SetRxConfig(MODEM_LORA,
+                      LORA_BANDWIDTH,
+                      LORA_SPREADING_FACTOR, LORA_CODINGRATE,
+                      0,                  /* AFC BW (LoRa: unused) */
+                      LORA_PREAMBLE_LENGTH,
+                      LORA_SYMBOL_TIMEOUT,
+                      LORA_FIX_LENGTH_PAYLOAD_ON,
+                      0,                  /* payload len (variable) */
+                      true,               /* CRC on */
+                      0, 0,               /* freq-hop off */
+                      LORA_IQ_INVERSION_ON,
+                      true);              /* continuous RX (overridden by timeout) */
+
+    Radio.SetMaxPayloadLength(MODEM_LORA, MAX_APP_BUFFER_SIZE);
+
+#elif ((USE_MODEM_LORA == 0) && (USE_MODEM_FSK == 1))
+    APP_LOG(TS_OFF, VLEVEL_M, "Modulation : FSK\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "BW         : %d Hz\r\n", FSK_BANDWIDTH);
+    APP_LOG(TS_OFF, VLEVEL_M, "DR         : %d bps\r\n", FSK_DATARATE);
+
+    Radio.SetTxConfig(MODEM_FSK,
+                      TX_OUTPUT_POWER, FSK_FDEV, 0,
+                      FSK_DATARATE, 0,
+                      FSK_PREAMBLE_LENGTH, FSK_FIX_LENGTH_PAYLOAD_ON,
+                      true, 0, 0, 0,
+                      TX_TIMEOUT_VALUE);
+
+    Radio.SetRxConfig(MODEM_FSK,
+                      FSK_BANDWIDTH, FSK_DATARATE,
+                      0, FSK_AFC_BANDWIDTH, FSK_PREAMBLE_LENGTH,
+                      0, FSK_FIX_LENGTH_PAYLOAD_ON,
+                      0, true, 0, 0, false, true);
+
+    Radio.SetMaxPayloadLength(MODEM_FSK, MAX_APP_BUFFER_SIZE);
+
+#else
+#error "Please define a modulation in subghz_phy_app.h (USE_MODEM_LORA or USE_MODEM_FSK)."
+#endif /* USE_MODEM_LORA | USE_MODEM_FSK */
+
+    /* ── Buffer initialisation ──────────────────────────────────────────── */
+    memset(BufferTx,    0x00, MAX_APP_BUFFER_SIZE);
+    memset(BufferRx,    0x00, MAX_APP_BUFFER_SIZE);
+    memset(CurrentMsg,  0x00, sizeof(CurrentMsg));
+
+    /* ── Sequencer task registration ────────────────────────────────────── */
+    UTIL_SEQ_RegTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     UTIL_SEQ_RFU,
+                     Master_Process);
+
+    /* ── Periodic send timer ────────────────────────────────────────────── */
+    UTIL_TIMER_Create(&sendTimer, 0xFFFFFFFFU, UTIL_TIMER_PERIODIC,
+                      SendTimerCallback, NULL);
+    UTIL_TIMER_SetPeriod(&sendTimer, SEND_PERIOD_MS);
+    UTIL_TIMER_Start(&sendTimer);
+
+    APP_LOG(TS_OFF, VLEVEL_M, "Send interval : %u ms\r\n",
+            (unsigned long)SEND_PERIOD_MS);
+    APP_LOG(TS_OFF, VLEVEL_M, "ACK timeout   : %u ms\r\n",
+            (unsigned long)RX_TIMEOUT_VALUE);
+    APP_LOG(TS_OFF, VLEVEL_M, "==============================\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "Waiting for first send timer...\r\n");
+
+    /* Radio idles in sleep until the first send timer fires */
+    Radio.Sleep();
+    /* USER CODE END SubghzApp_Init_2 */
+}
+
+/* =========================================================================
+ * Radio event callbacks (called from radio ISR — keep them short)
+ * ========================================================================= */
+
+/**
+ * @brief  TX finished successfully.
+ *         Transition to MASTER_TX_DONE so Master_Process() opens the RX window.
+ */
+static void OnTxDone(void)
+{
+    /* USER CODE BEGIN OnTxDone */
+    State = MASTER_TX_DONE;
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     CFG_SEQ_Prio_0);
+    /* USER CODE END OnTxDone */
+}
+
+static uint8_t ReadSensorPB5(void)
+{
+//	APP_LOG(TS_OFF, VLEVEL_M, "==============================\r\n");
+//	APP_LOG(TS_ON, VLEVEL_L,
+//				            "Readed Rain succ: %d\r\n", (uint8_t)HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5));
+    return (uint8_t)HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
+
+}
+
+static uint8_t ReadSensorPB9(void)
+{
+//	APP_LOG(TS_ON, VLEVEL_L,
+//				            "Readed Soil succ: %d\r\n", (uint8_t)HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_9));
+//	APP_LOG(TS_OFF, VLEVEL_M, "==============================\r\n");
+    return (uint8_t)HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_9);
+
+}
+
+/**
+ * @brief  A packet arrived while in the ACK receive window.
+ *         Copy the payload and transition to MASTER_RX_DONE.
+ */
+static void OnRxDone(uint8_t *payload, uint16_t size,
+                     int16_t rssi, int8_t LoraSnr_FskCfo)
+{
+    /* USER CODE BEGIN OnRxDone */
+#if ((USE_MODEM_LORA == 1) && (USE_MODEM_FSK == 0))
+    SnrValue = LoraSnr_FskCfo;
+#else
+    SnrValue = 0; /* SNR not applicable in FSK mode */
+#endif
+
+    RssiValue = rssi;
+
+    memset(BufferRx, 0x00, MAX_APP_BUFFER_SIZE);
+
+    if (size <= (MAX_APP_BUFFER_SIZE - 1U))
+    {
+        memcpy(BufferRx, payload, size);
+        RxBufferSize    = size;
+        BufferRx[size]  = '\0'; /* ensure NUL-termination for string ops */
+    }
+    else
+    {
+        /* Oversized payload — discard */
+        RxBufferSize = 0U;
+    }
+
+    State = MASTER_RX_DONE;
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     CFG_SEQ_Prio_0);
+    /* USER CODE END OnRxDone */
+}
+
+/**
+ * @brief  Radio TX watchdog expired.
+ *         Hardware could not complete the transmission.
+ */
+static void OnTxTimeout(void)
+{
+    /* USER CODE BEGIN OnTxTimeout */
+    State = MASTER_TX_TIMEOUT;
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     CFG_SEQ_Prio_0);
+    /* USER CODE END OnTxTimeout */
+}
+
+/**
+ * @brief  RX window expired without receiving any packet.
+ *         ACK was not received in time — declare a miss.
+ */
+static void OnRxTimeout(void)
+{
+    /* USER CODE BEGIN OnRxTimeout */
+    State = MASTER_RX_TIMEOUT;
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     CFG_SEQ_Prio_0);
+    /* USER CODE END OnRxTimeout */
+}
+
+/**
+ * @brief  CRC or demodulation error during the ACK receive window.
+ *         Treated the same as a miss.
+ */
+static void OnRxError(void)
+{
+    /* USER CODE BEGIN OnRxError */
+    State = MASTER_RX_ERROR;
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     CFG_SEQ_Prio_0);
+    /* USER CODE END OnRxError */
+}
+
+/* =========================================================================
+ * Private functions
+ * ========================================================================= */
+
+/* USER CODE BEGIN PrFD */
+
+/**
+ * @brief  Master FSM — runs in main-loop context via the sequencer.
+ *
+ *  ┌─────────────────────────────────────────────────────────────────────┐
+ *  │  sendTimer fires  ──▶  SendPacket()  ──▶  Radio.Send()             │
+ *  │       │                                        │                    │
+ *  │       │                              OnTxDone (ISR)                 │
+ *  │       │                                        │                    │
+ *  │       │                            MASTER_TX_DONE ──▶ Radio.Rx()   │
+ *  │       │                                        │                    │
+ *  │       │               ┌────────────────────────┤                    │
+ *  │       │     OnRxDone  │          OnRxTimeout   │    OnRxError       │
+ *  │       │     (ISR)     │          (ISR)         │    (ISR)           │
+ *  │       │               │                        │                    │
+ *  │  MASTER_RX_DONE  MASTER_RX_TIMEOUT       MASTER_RX_ERROR           │
+ *  │  ACK? ✅ stats   ❌ stats + SD hook       ❌ stats + SD hook        │
+ *  │  Radio.Sleep()   Radio.Sleep()            Radio.Sleep()             │
+ *  └─────────────────────────────────────────────────────────────────────┘
+ */
+static void Master_Process(void)
+{
+    switch (State)
+    {
+        /* ------------------------------------------------------------------ */
+        case MASTER_TX_DONE:
+        /* TX succeeded — open the ACK receive window                         */
+        /* ------------------------------------------------------------------ */
+            APP_LOG(TS_ON, VLEVEL_L,
+                    "TX done. Opening ACK window (%u ms)...\r\n",
+                    (unsigned long)RX_TIMEOUT_VALUE);
+
+            Radio.Rx(RX_TIMEOUT_VALUE);
+            break;
+
+        /* ------------------------------------------------------------------ */
+        case MASTER_RX_DONE:
+        /* A packet arrived in the ACK window — check if it is a valid ACK    */
+        /* ------------------------------------------------------------------ */
+            Radio.Sleep();
+
+            if ((RxBufferSize > 0U) &&
+                (strncmp((const char *)BufferRx, ACK_MSG, strlen(ACK_MSG)) == 0))
+            {
+                /* ── Valid ACK ─────────────────────────────────────────── */
+                ackCounter++;
+                LED_Toggle(LED_RED2);
+
+                APP_LOG(TS_ON, VLEVEL_L,
+                        "ACK RECEIVED ✅  [RSSI=%d dBm | SNR=%d dB]\r\n",
+                        RssiValue, SnrValue);
+            }
+            else
+            {
+                /*
+                 * ── Unexpected packet (not an ACK) ──────────────────────
+                 * The Slave should only send "ACK", so anything else is
+                 * treated as a miss.  Call the SD hook with context.
+                 */
+                missCounter++;
+                APP_LOG(TS_ON, VLEVEL_L,
+                        "UNEXPECTED RX (not ACK): \"%s\" — treated as miss\r\n",
+                        BufferRx);
+
+                SD_SaveMissedPacket(CurrentMsg, txCounter, RssiValue);
+            }
+
+            /* Log cycle statistics */
+            APP_LOG(TS_OFF, VLEVEL_L,
+                    "--- STATS | Sent: %u | ACKed: %u | Missed: %u ---\r\n",
+                    (unsigned long)txCounter,
+                    (unsigned long)ackCounter,
+                    (unsigned long)missCounter);
+            break;
+
+        /* ------------------------------------------------------------------ */
+        case MASTER_RX_TIMEOUT:
+        /* ACK window expired — Slave did not respond in time                  */
+        /* ------------------------------------------------------------------ */
+            Radio.Sleep();
+            missCounter++;
+
+            APP_LOG(TS_ON, VLEVEL_L,
+                    "ACK TIMEOUT ❌  No response for \"%s\"\r\n",
+                    CurrentMsg);
+
+            SD_SaveMissedPacket(CurrentMsg, txCounter, RssiValue);
+
+            APP_LOG(TS_OFF, VLEVEL_L,
+                    "--- STATS | Sent: %u | ACKed: %u | Missed: %u ---\r\n",
+                    (unsigned long)txCounter,
+                    (unsigned long)ackCounter,
+                    (unsigned long)missCounter);
+            break;
+
+        /* ------------------------------------------------------------------ */
+        case MASTER_RX_ERROR:
+        /* CRC / demodulation error during ACK window — treat as miss          */
+        /* ------------------------------------------------------------------ */
+            Radio.Sleep();
+            missCounter++;
+
+            APP_LOG(TS_ON, VLEVEL_L,
+                    "RX ERROR ❌  During ACK window for \"%s\"\r\n",
+                    CurrentMsg);
+
+            SD_SaveMissedPacket(CurrentMsg, txCounter, RssiValue);
+
+            APP_LOG(TS_OFF, VLEVEL_L,
+                    "--- STATS | Sent: %u | ACKed: %u | Missed: %u ---\r\n",
+                    (unsigned long)txCounter,
+                    (unsigned long)ackCounter,
+                    (unsigned long)missCounter);
+            break;
+
+        /* ------------------------------------------------------------------ */
+        case MASTER_TX_TIMEOUT:
+        /* Radio TX watchdog fired — transmission never completed              */
+        /* ------------------------------------------------------------------ */
+            Radio.Sleep();
+            missCounter++;
+
+            APP_LOG(TS_ON, VLEVEL_L,
+                    "TX TIMEOUT ❌  Failed to transmit \"%s\"\r\n",
+                    CurrentMsg);
+
+            /*
+             * TX timeout means the Slave never received the packet,
+             * so there is nothing to ACK — log to SD as a miss.
+             */
+            SD_SaveMissedPacket(CurrentMsg, txCounter, 0);
+
+            APP_LOG(TS_OFF, VLEVEL_L,
+                    "--- STATS | Sent: %u | ACKed: %u | Missed: %u ---\r\n",
+                    (unsigned long)txCounter,
+                    (unsigned long)ackCounter,
+                    (unsigned long)missCounter);
+            break;
+
+        /* ------------------------------------------------------------------ */
+        case MASTER_INIT:
+        default:
+        /* ------------------------------------------------------------------ */
+            Radio.Sleep();
+            break;
+    }
+}
+
+/**
+ * @brief  Build the "MSG_<counter>" string, copy it to BufferTx, and
+ *         call Radio.Send().
+ *
+ * @note   Also saves a copy in CurrentMsg so the ACK-miss path can pass
+ *         the original payload string to SD_SaveMissedPacket().
+ */
+static void SendPacket(void)
+{
+
+	//    Sensors logic BEGIN___________________________________________________________________________
+
+	    sensor_rain_state = ReadSensorPB5();
+	    sensor_soil_state = ReadSensorPB9();
+	    APP_LOG(TS_OFF, VLEVEL_M, "==============================\r\n");
+		APP_LOG(TS_OFF, VLEVEL_L,
+		            "Sensor Rain PB5: => %s\r\n",
+					sensor_rain_state ? "LOW" : "HIGH");
+		APP_LOG(TS_OFF, VLEVEL_L,
+					"Sensor Soil PB9: => %s\r\n",
+					sensor_soil_state ? "LOW" : "HIGH");
+		APP_LOG(TS_OFF, VLEVEL_M, "==============================\r\n");
+
+		//    Sensors logic END___________________________________________________________________________
+
+
+    /* Build the message string */
+    int len = snprintf(CurrentMsg, sizeof(CurrentMsg), "MSG_%u | Soil: %d | Rain: %d",
+                       (unsigned int)txCounter, sensor_soil_state, sensor_rain_state);
+
+    if (len <= 0 || (uint32_t)len >= sizeof(CurrentMsg))
+    {
+        /* snprintf error or truncation — should never happen for this format */
+        APP_LOG(TS_ON, VLEVEL_L, "SendPacket: message format error\r\n");
+        return;
+    }
+
+
+
+    CurrentMsgLen = (uint8_t)len;
+
+    memset(BufferTx, 0x00, MAX_APP_BUFFER_SIZE);
+    memcpy(BufferTx, CurrentMsg, CurrentMsgLen);
+
+    APP_LOG(TS_OFF, VLEVEL_L,
+            "\r\n------------------------------\r\n");
+    APP_LOG(TS_ON,  VLEVEL_L,
+            "TRANSMITTING: \"%s\" [#%u]\r\n",
+            CurrentMsg,
+            (unsigned long)txCounter);
+
+    Radio.Send(BufferTx, CurrentMsgLen);
+}
+
+/**
+ * @brief  Periodic timer callback — fires every SEND_PERIOD_MS.
+ *
+ *         Increments the packet counter and triggers a new transmission.
+ *         Runs in timer (interrupt) context — keep it minimal.
+ */
+static void SendTimerCallback(void *context)
+{
+    UNUSED(context);
+    txCounter++;
+    SendPacket();
+}
+
+/**
+ * @brief  LED heartbeat timer callback.
+ *         Toggles LED_RED1 and re-arms the one-shot timer.
+ */
+static void OnledEvent(void *context)
+{
+    UNUSED(context);
+    LED_Toggle(LED_RED1);
+    UTIL_TIMER_Start(&timerLed);
+}
+
+/* =========================================================================
+ * SD card hook — default (weak) implementation
+ * =========================================================================
+ *
+ * Override this function in your own .c file to write missed packets to the
+ * SD card.  Example (FatFs):
+ *
+ *   void SD_SaveMissedPacket(const char *msg, uint32_t counter, int16_t lastRssi)
+ *   {
+ *       char line[128];
+ *       snprintf(line, sizeof(line), "%lu,%s,%d\n", counter, msg, lastRssi);
+ *       // open file, f_write(line), f_close — or use a buffered writer
+ *       SD_AppendLine(line);
+ *   }
+ * ========================================================================= */
+__weak void SD_SaveMissedPacket(const char *msg,
+                                uint32_t    counter,
+                                int16_t     lastRssi)
+{
+    /* USER CODE BEGIN SD_SaveMissedPacket */
+    APP_LOG(TS_ON, VLEVEL_L,
+            "[SD STUB] Missed packet #%u: \"%s\" (last RSSI=%d dBm)\r\n",
+            (unsigned long)counter, msg, lastRssi);
+    /*
+     * TODO: Replace the line above with your SD card write call, e.g.:
+     *   SD_AppendLine(counter, msg, lastRssi);
+     */
+    /* USER CODE END SD_SaveMissedPacket */
+}
+
+/* USER CODE END PrFD */
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

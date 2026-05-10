@@ -1,0 +1,110 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* IrriSense palette */
+  --bg-sidebar: #1a1f2e;
+  --bg-main: #f4f6f9;
+  --accent-green: #3a9e4f;
+  --accent-green-dark: #2d7a3a;
+  --accent-green-light: #e8f5e9;
+  --text-primary: #1a1f2e;
+  --text-muted: #6b7280;
+  --card-bg: #ffffff;
+  --border-soft: #e5e7eb;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+
+  /* shadcn tokens mapped to brand */
+  --background: #f4f6f9;
+  --foreground: #1a1f2e;
+  --card: #ffffff;
+  --card-foreground: #1a1f2e;
+  --popover: #ffffff;
+  --popover-foreground: #1a1f2e;
+  --primary: #3a9e4f;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1a1f2e;
+  --muted: #f1f5f9;
+  --muted-foreground: #6b7280;
+  --accent: #e8f5e9;
+  --accent-foreground: #2d7a3a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #3a9e4f;
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans), 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), 'Space Mono', ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar-bg: var(--bg-sidebar);
+  --color-accent-green: var(--accent-green);
+  --color-accent-green-dark: var(--accent-green-dark);
+  --color-accent-green-light: var(--accent-green-light);
+  --color-text-muted: var(--text-muted);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Pulse dot for LIVE badge */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+.pulse-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+/* Map grid background */
+.map-grid {
+  background-color: #0f1320;
+  background-image:
+    linear-gradient(rgba(58, 158, 79, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 158, 79, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 30% 40%, rgba(58, 158, 79, 0.12), transparent 55%),
+    radial-gradient(circle at 75% 65%, rgba(245, 158, 11, 0.08), transparent 50%);
+  background-size: 32px 32px, 32px 32px, 100% 100%, 100% 100%;
+}

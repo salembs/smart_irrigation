@@ -1,0 +1,6 @@
+../Application/Core/esp32_uart.c:17:6:ESP32_UART_Init	40	static
+../Application/Core/esp32_uart.c:64:6:ESP32_UART_RxCallback	8	static
+../Application/Core/esp32_uart.c:83:6:ESP32_UART_GetCommand	32	static
+../Application/Core/esp32_uart.c:114:19:ESP32_UART_Send	8	static
+../Application/Core/esp32_uart.c:119:19:ESP32_UART_SendString	8	static
+../Application/Core/esp32_uart.c:130:6:HAL_UART_ErrorCallback	8	static

@@ -1,0 +1,519 @@
+#include "platform.h"
+#include "sys_app.h"
+#include "subghz_phy_app.h"
+#include "radio.h"
+#include "app_version.h"
+
+/* USER CODE BEGIN Includes */
+#include "stm32_timer.h"
+#include "stm32_seq.h"
+#include "utilities_def.h"
+#include <string.h>
+#include <stdio.h>
+#include "esp32_uart.h"
+/* USER CODE END Includes */
+
+/* Private defines -----------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+
+/** Maximum LoRa / FSK payload size handled by this application. */
+#define MAX_APP_BUFFER_SIZE     255U
+
+#if (PAYLOAD_LEN > MAX_APP_BUFFER_SIZE)
+#error PAYLOAD_LEN must be less or equal than MAX_APP_BUFFER_SIZE
+#endif
+
+/** Radio-level TX watchdog [ms] (passed to SetTxConfig). */
+#define TX_TIMEOUT_VALUE        3000U
+
+/**
+ * @brief  ACK string transmitted back to the Master.
+ * @note   Must match the ACK_MSG defined in the Master's subghz_phy_app.c.
+ */
+#define ACK_MSG                 "ACK"
+#define ACK_MSG_LEN             3U  /* strlen("ACK") — avoid runtime call */
+
+/** LED heartbeat blink period [ms].
+ *  Slower than the Master (500 ms) to visually distinguish the two nodes. */
+#define LED_PERIOD_MS           500U
+
+/** FSK AFC bandwidth — kept for FSK config block, not used in LoRa mode. */
+#define FSK_AFC_BANDWIDTH       83333U
+
+/* USER CODE END PD */
+
+/* Private typedefs ----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/**
+ * @brief  Slave FSM states.
+ *
+ *         Radio ISR callbacks write to State and post the sequencer task;
+ *         Slave_Process() reads State in the main-loop context.
+ */
+typedef enum
+{
+    SLAVE_IDLE       = 0, /**< Idle in continuous RX — waiting for Master     */
+    SLAVE_RX_DONE,        /**< Packet received — must send ACK immediately    */
+    SLAVE_RX_TIMEOUT,     /**< RX timeout (should not occur in continuous RX) */
+    SLAVE_RX_ERROR,       /**< CRC / demodulation error — return to RX        */
+    SLAVE_TX_DONE,        /**< ACK sent successfully — return to RX           */
+    SLAVE_TX_TIMEOUT,     /**< ACK TX watchdog fired — return to RX           */
+} SlaveState_t;
+
+/* USER CODE END PTD */
+
+/* Private variables ---------------------------------------------------------*/
+/* USER CODE BEGIN PV */
+
+/** Registered radio event callbacks. */
+static RadioEvents_t RadioEvents;
+
+/**
+ * @brief  Current FSM state.
+ * @note   Written from radio ISR context, read from task context.
+ */
+static volatile SlaveState_t State = SLAVE_IDLE;
+
+/** Application TX buffer — pre-loaded with "ACK" once at init. */
+static uint8_t BufferTx[MAX_APP_BUFFER_SIZE];
+
+/** Application RX buffer. */
+static uint8_t BufferRx[MAX_APP_BUFFER_SIZE];
+
+
+/** Number of bytes in the last received payload. */
+static uint16_t RxBufferSize = 0;
+
+/** RSSI of the last received packet [dBm]. */
+static int16_t RssiValue = 0;
+
+/** SNR of the last received LoRa packet [dB].  0 for FSK. */
+static int8_t SnrValue = 0;
+
+/* --- Statistics counters -------------------------------------------------- */
+static uint32_t rxCounter      = 0; /**< Total packets received from Master. */
+static uint32_t ackSentCounter = 0; /**< Total ACKs successfully transmitted.*/
+static uint32_t errorCounter   = 0; /**< Total RX errors + TX timeouts.      */
+
+/* --- Timer objects --------------------------------------------------------- */
+static UTIL_TIMER_Object_t timerLed; /**< Heartbeat LED blink timer.         */
+
+/* USER CODE END PV */
+
+/* Private function prototypes -----------------------------------------------*/
+static void OnTxDone(void);
+static void OnRxDone(uint8_t *payload, uint16_t size,
+                     int16_t rssi, int8_t LoraSnr_FskCfo);
+static void OnTxTimeout(void);
+static void OnRxTimeout(void);
+static void OnRxError(void);
+
+/* USER CODE BEGIN PFP */
+static void Slave_Process(void);
+static void OnledEvent(void *context);
+static void ESP32_Cmd_Process(void);
+/* USER CODE END PFP */
+
+/* =========================================================================
+ * Exported functions
+ * ========================================================================= */
+
+void SubghzApp_Init(void)
+{
+    /* USER CODE BEGIN SubghzApp_Init_1 */
+    APP_LOG(TS_OFF, VLEVEL_M, "\r\n==============================\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "         SLAVE NODE\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "==============================\r\n");
+
+    APP_LOG(TS_OFF, VLEVEL_M, "APP_VERSION= V%X.%X.%X\r\n",
+            (uint8_t)(__APP_VERSION >> __APP_VERSION_MAIN_SHIFT),
+            (uint8_t)(__APP_VERSION >> __APP_VERSION_SUB1_SHIFT),
+            (uint8_t)(__APP_VERSION >> __APP_VERSION_SUB2_SHIFT));
+
+
+    /* ── LEDs ───────────────────────────────────────────────────────────── */
+    LED_Init(LED_RED1);   /* Heartbeat blink (slow)                           */
+    LED_Init(LED_RED2);   /* Flashes on every received packet                 */
+
+    UTIL_TIMER_Create(&timerLed, 0xFFFFFFFFU, UTIL_TIMER_ONESHOT,
+                      OnledEvent, NULL);
+    UTIL_TIMER_SetPeriod(&timerLed, LED_PERIOD_MS);
+    UTIL_TIMER_Start(&timerLed);
+    /* USER CODE END SubghzApp_Init_1 */
+
+    /* ── Pump GPIO (PB8) ────────────────────────────────────────────── */
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    GPIO_InitTypeDef pumpGpio = {0};
+    pumpGpio.Pin   = GPIO_PIN_8;
+    pumpGpio.Mode  = GPIO_MODE_OUTPUT_PP;
+    pumpGpio.Pull  = GPIO_NOPULL;
+    pumpGpio.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &pumpGpio);
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
+
+       ESP32_UART_Init();
+
+
+       char testBuf[19];
+       				int  testLen = snprintf(testBuf, sizeof(testBuf),
+       										"SLAVE NODE READY\r\n");
+
+       				if (testLen > 0)
+       				{
+       					ESP32_UART_SendString(testBuf);
+       				}
+
+    /* ── Radio initialisation ───────────────────────────────────────────── */
+    RadioEvents.TxDone    = OnTxDone;
+    RadioEvents.RxDone    = OnRxDone;
+    RadioEvents.TxTimeout = OnTxTimeout;
+    RadioEvents.RxTimeout = OnRxTimeout;
+    RadioEvents.RxError   = OnRxError;
+
+    Radio.Init(&RadioEvents);
+
+    /* USER CODE BEGIN SubghzApp_Init_2 */
+    Radio.SetChannel(RF_FREQUENCY);
+
+#if ((USE_MODEM_LORA == 1) && (USE_MODEM_FSK == 0))
+    APP_LOG(TS_OFF, VLEVEL_M, "Modulation : LoRa\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "Frequency  : %u Hz\r\n",
+            (unsigned long)RF_FREQUENCY);
+    APP_LOG(TS_OFF, VLEVEL_M, "BW         : %d kHz\r\n",
+            (1 << LORA_BANDWIDTH) * 125);
+    APP_LOG(TS_OFF, VLEVEL_M, "SF         : %d\r\n", LORA_SPREADING_FACTOR);
+    APP_LOG(TS_OFF, VLEVEL_M, "CR         : 4/%d\r\n",
+            LORA_CODINGRATE + 4);
+
+    Radio.SetTxConfig(MODEM_LORA,
+                      TX_OUTPUT_POWER, 0,
+                      LORA_BANDWIDTH,
+                      LORA_SPREADING_FACTOR, LORA_CODINGRATE,
+                      LORA_PREAMBLE_LENGTH, LORA_FIX_LENGTH_PAYLOAD_ON,
+                      true,               /* CRC on */
+                      0, 0,               /* freq-hop off */
+                      LORA_IQ_INVERSION_ON,
+                      TX_TIMEOUT_VALUE);
+
+    Radio.SetRxConfig(MODEM_LORA,
+                      LORA_BANDWIDTH,
+                      LORA_SPREADING_FACTOR, LORA_CODINGRATE,
+                      0,                  /* AFC BW (LoRa: unused) */
+                      LORA_PREAMBLE_LENGTH,
+                      LORA_SYMBOL_TIMEOUT,
+                      LORA_FIX_LENGTH_PAYLOAD_ON,
+                      0,                  /* payload len (variable) */
+                      true,               /* CRC on */
+                      0, 0,               /* freq-hop off */
+                      LORA_IQ_INVERSION_ON,
+                      true);              /* continuous RX mode */
+
+    Radio.SetMaxPayloadLength(MODEM_LORA, MAX_APP_BUFFER_SIZE);
+
+#elif ((USE_MODEM_LORA == 0) && (USE_MODEM_FSK == 1))
+    APP_LOG(TS_OFF, VLEVEL_M, "Modulation : FSK\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "BW         : %d Hz\r\n", FSK_BANDWIDTH);
+    APP_LOG(TS_OFF, VLEVEL_M, "DR         : %d bps\r\n", FSK_DATARATE);
+
+    Radio.SetTxConfig(MODEM_FSK,
+                      TX_OUTPUT_POWER, FSK_FDEV, 0,
+                      FSK_DATARATE, 0,
+                      FSK_PREAMBLE_LENGTH, FSK_FIX_LENGTH_PAYLOAD_ON,
+                      true, 0, 0, 0,
+                      TX_TIMEOUT_VALUE);
+
+    Radio.SetRxConfig(MODEM_FSK,
+                      FSK_BANDWIDTH, FSK_DATARATE,
+                      0, FSK_AFC_BANDWIDTH, FSK_PREAMBLE_LENGTH,
+                      0, FSK_FIX_LENGTH_PAYLOAD_ON,
+                      0, true, 0, 0, false, true);
+
+    Radio.SetMaxPayloadLength(MODEM_FSK, MAX_APP_BUFFER_SIZE);
+
+#else
+#error "Please define a modulation in subghz_phy_app.h (USE_MODEM_LORA or USE_MODEM_FSK)."
+#endif /* USE_MODEM_LORA | USE_MODEM_FSK */
+
+    /* ── Buffer initialisation ──────────────────────────────────────────── */
+    memset(BufferRx, 0x00, MAX_APP_BUFFER_SIZE);
+    memset(BufferTx, 0x00, MAX_APP_BUFFER_SIZE);
+
+    /*
+     * Pre-load the ACK payload into BufferTx once here.
+     * It never changes, so we avoid a memcpy on every received packet.
+     */
+    memcpy(BufferTx, ACK_MSG, ACK_MSG_LEN);
+
+    /* ── Sequencer task registration ────────────────────────────────────── */
+    UTIL_SEQ_RegTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     UTIL_SEQ_RFU,
+                     Slave_Process);
+
+    UTIL_SEQ_RegTask((1 << CFG_SEQ_Task_ESP32_Cmd_Process),
+                         UTIL_SEQ_RFU,
+                         ESP32_Cmd_Process);
+
+    APP_LOG(TS_OFF, VLEVEL_M, "==============================\r\n");
+    APP_LOG(TS_OFF, VLEVEL_M, "Listening for Master packets...\r\n");
+
+    /*
+     * Enter continuous RX immediately.
+     * Passing 0 as timeout means the radio stays in RX until a packet
+     * arrives or Radio.Sleep() / Radio.Standby() is explicitly called.
+     */
+    Radio.Rx(0);
+    /* USER CODE END SubghzApp_Init_2 */
+}
+
+/**
+ * @brief  ACK TX completed successfully.
+ */
+static void OnTxDone(void)
+{
+    /* USER CODE BEGIN OnTxDone */
+    State = SLAVE_TX_DONE;
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     CFG_SEQ_Prio_0);
+    /* USER CODE END OnTxDone */
+}
+
+/**
+ * @brief  A packet from the Master was received successfully.
+ *         Copy the payload and schedule Slave_Process() to send the ACK.
+ */
+static void OnRxDone(uint8_t *payload, uint16_t size,
+                     int16_t rssi, int8_t LoraSnr_FskCfo)
+{
+    /* USER CODE BEGIN OnRxDone */
+#if ((USE_MODEM_LORA == 1) && (USE_MODEM_FSK == 0))
+    SnrValue = LoraSnr_FskCfo;
+#else
+    SnrValue = 0; /* SNR not applicable in FSK mode */
+#endif
+
+    RssiValue = rssi;
+
+    memset(BufferRx, 0x00, MAX_APP_BUFFER_SIZE);
+
+    if (size <= (MAX_APP_BUFFER_SIZE - 1U))
+    {
+        memcpy(BufferRx, payload, size);
+        RxBufferSize   = size;
+        BufferRx[size] = '\0';
+    }
+    else
+    {
+        /* Oversized payload — discard but still send ACK (unconditional) */
+        RxBufferSize = 0U;
+    }
+
+    State = SLAVE_RX_DONE;
+
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     CFG_SEQ_Prio_0);
+    /* USER CODE END OnRxDone */
+}
+
+/**
+ * @brief  ACK TX watchdog fired — the radio could not complete the
+ *         transmission.  Return to RX so the Slave does not get stuck.
+ */
+static void OnTxTimeout(void)
+{
+    /* USER CODE BEGIN OnTxTimeout */
+    State = SLAVE_TX_TIMEOUT;
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     CFG_SEQ_Prio_0);
+    /* USER CODE END OnTxTimeout */
+}
+
+/**
+ * @brief  RX timeout callback.
+ *
+ * @note   With Radio.Rx(0) (continuous RX) this callback should never fire.
+ *         It is handled defensively to keep the state machine self-healing.
+ */
+static void OnRxTimeout(void)
+{
+    /* USER CODE BEGIN OnRxTimeout */
+    State = SLAVE_RX_TIMEOUT;
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     CFG_SEQ_Prio_0);
+    /* USER CODE END OnRxTimeout */
+}
+
+/**
+ * @brief  CRC or demodulation error.
+ *         Return to RX — the Master's next cycle will retry.
+ */
+static void OnRxError(void)
+{
+    /* USER CODE BEGIN OnRxError */
+    State = SLAVE_RX_ERROR;
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process),
+                     CFG_SEQ_Prio_0);
+    /* USER CODE END OnRxError */
+}
+
+/* =========================================================================
+ * Private functions
+ * ========================================================================= */
+
+/* USER CODE BEGIN PrFD */
+
+static void Slave_Process(void)
+{
+	switch (State)
+	    {
+	        /* ------------------------------------------------------------------ */
+	        case SLAVE_RX_DONE:
+	        /* Packet received — log it, then fire the ACK immediately            */
+	        /* ------------------------------------------------------------------ */
+	            rxCounter++;
+	            LED_Toggle(LED_RED2);
+
+	            APP_LOG(TS_OFF, VLEVEL_L,
+	                    "\r\n------------------------------\r\n");
+	            APP_LOG(TS_ON,  VLEVEL_L,
+	                    "RX [#%u]: \"%s\" | RSSI=%d dBm | SNR=%d dB\r\n",
+	                    (unsigned long)rxCounter,
+	                    (RxBufferSize > 0U) ? (const char *)BufferRx : "<empty>",
+	                    RssiValue,
+	                    SnrValue);
+
+
+	            /* ── Forward received LoRa payload to ESP32 ─────────────────── */
+				if (RxBufferSize > 0U)                        /* ← ADD THIS BLOCK */
+				{
+					char uartBuf[MAX_APP_BUFFER_SIZE + 32];
+					int  uartLen = snprintf(uartBuf, sizeof(uartBuf),
+											"LORA:RX:%s:RSSI=%d:SNR=%d\r\n",
+											(char *)BufferRx,
+											RssiValue,
+											SnrValue);
+
+					if (uartLen > 0)
+					{
+			            APP_LOG(TS_OFF, VLEVEL_H,"Received: %s ", uartBuf);
+						ESP32_UART_SendString(uartBuf);
+					}
+				}
+				/* ── End ESP32 forward ──────────────────────────────────────── */
+	            APP_LOG(TS_ON,  VLEVEL_L, "Sending ACK...\r\n");
+
+	            /*
+	             * BufferTx is pre-loaded with "ACK" in SubghzApp_Init().
+	             * No memcpy needed here — just call Send directly.
+	             */
+	            Radio.Send(BufferTx, ACK_MSG_LEN);
+	            break;
+
+	        /* ------------------------------------------------------------------ */
+	        case SLAVE_TX_DONE:
+	        /* ACK sent successfully — log stats and return to continuous RX      */
+	        /* ------------------------------------------------------------------ */
+	            ackSentCounter++;
+
+	            APP_LOG(TS_ON, VLEVEL_L,
+	                    "ACK sent ✅  [#%u]\r\n",
+	                    (unsigned long)ackSentCounter);
+	            APP_LOG(TS_OFF, VLEVEL_L,
+	                    "--- STATS | RX: %u | ACK Sent: %u | Errors: %u ---\r\n",
+	                    (unsigned long)rxCounter,
+	                    (unsigned long)ackSentCounter,
+	                    (unsigned long)errorCounter);
+
+	            // ESP32_UART_SendString("ACK_SENT\r\n");        /* ← ADD THIS */
+
+	            Radio.Rx(0); /* back to continuous RX */
+	            break;
+
+	        /* ------------------------------------------------------------------ */
+	        case SLAVE_TX_TIMEOUT:
+	        /* ACK TX watchdog fired — recover by returning to RX                 */
+	        /* ------------------------------------------------------------------ */
+	            errorCounter++;
+
+	            APP_LOG(TS_ON, VLEVEL_L,
+	                    "ACK TX TIMEOUT ❌  [error #%u] — returning to RX\r\n",
+	                    (unsigned long)errorCounter);
+
+	            Radio.Rx(0);
+	            break;
+
+	        /* ------------------------------------------------------------------ */
+	        case SLAVE_RX_ERROR:
+	        /* CRC / demodulation error — return to RX; Master will retry         */
+	        /* ------------------------------------------------------------------ */
+	            errorCounter++;
+
+	            APP_LOG(TS_ON, VLEVEL_L,
+	                    "RX ERROR ❌  [error #%u] — returning to RX\r\n",
+	                    (unsigned long)errorCounter);
+
+	            Radio.Rx(0);
+	            break;
+
+	        /* ------------------------------------------------------------------ */
+	        case SLAVE_RX_TIMEOUT:
+	        /* Should never occur with continuous RX — handled defensively        */
+	        /* ------------------------------------------------------------------ */
+	            APP_LOG(TS_ON, VLEVEL_L,
+	                    "RX TIMEOUT (unexpected) — returning to RX\r\n");
+
+	            Radio.Rx(0);
+	            break;
+
+	        /* ------------------------------------------------------------------ */
+	        case SLAVE_IDLE:
+	        default:
+	        /* ------------------------------------------------------------------ */
+	            /* Nothing to do — radio is already in RX */
+	            break;
+	    }
+
+
+}
+
+static void ESP32_Cmd_Process(void)
+{
+    char cmd[ESP32_CMD_MAX_LEN];
+
+    while (ESP32_UART_GetCommand(cmd, sizeof(cmd)))
+    {
+        APP_LOG(TS_ON, VLEVEL_L, "ESP32 CMD: \"%s\"\r\n", cmd);
+
+        if (strncmp(cmd, "TON", 3) == 0)
+        {
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);
+            ESP32_UART_SendString("PUMP:ON\r\n");
+            APP_LOG(TS_ON, VLEVEL_L, "Pump ON\r\n");
+        }
+        else if (strncmp(cmd, "TOF", 3) == 0)
+        {
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
+            ESP32_UART_SendString("PUMP:OFF\r\n");
+            APP_LOG(TS_ON, VLEVEL_L, "Pump OFF\r\n");
+        }
+        else
+        {
+            ESP32_UART_SendString("UNKNOWN_CMD\r\n");
+        }
+    }
+}
+
+/**
+ * @brief  LED heartbeat timer callback.
+ *         Toggles LED_RED1 and re-arms the one-shot timer.
+ */
+static void OnledEvent(void *context)
+{
+    UNUSED(context);
+    LED_Toggle(LED_RED1);
+    UTIL_TIMER_Start(&timerLed);
+}
+
+/* USER CODE END PrFD */
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

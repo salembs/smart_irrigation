@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;cmwx1zzabz_0xx/Application/App/subghz_phy_app_before_update.c&apos;" deleteContents="false" description="Delete resource &apos;cmwx1zzabz_0xx/Application/App/subghz_phy_app_before_update.c&apos;" element1="/cmwx1zzabz_0xx/Application/App/subghz_phy_app_before_update.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1775943164293"/>
+</session>

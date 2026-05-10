@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<item key="replaceBarOpen" value="false"/>
+	<list key="searchhistory">
+		<item value="GPIO_PIN_8"/>
+		<item value="pump"/>
+		<item value="found"/>
+		<item value="EnterSleepMode"/>
+		<item value="ESP32_UART_SendString"/>
+		<item value="%lu"/>
+		<item value="uart"/>
+		<item value="HAL_UART_MspInit"/>
+		<item value="HAL_MspInit"/>
+		<item value="led"/>
+		<item value="app_log"/>
+		<item value="state"/>
+		<item value="SendTimerCallback"/>
+		<item value="sendTimer"/>
+		<item value="SendMessage"/>
+	</list>
+</section>

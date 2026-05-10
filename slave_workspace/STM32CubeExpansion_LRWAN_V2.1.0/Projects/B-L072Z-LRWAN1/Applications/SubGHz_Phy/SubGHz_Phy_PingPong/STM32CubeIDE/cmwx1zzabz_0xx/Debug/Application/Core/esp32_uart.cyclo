@@ -1,0 +1,6 @@
+../Application/Core/esp32_uart.c:17:6:ESP32_UART_Init	2
+../Application/Core/esp32_uart.c:64:6:ESP32_UART_RxCallback	2
+../Application/Core/esp32_uart.c:83:6:ESP32_UART_GetCommand	6
+../Application/Core/esp32_uart.c:114:19:ESP32_UART_Send	1
+../Application/Core/esp32_uart.c:119:19:ESP32_UART_SendString	1
+../Application/Core/esp32_uart.c:130:6:HAL_UART_ErrorCallback	2
