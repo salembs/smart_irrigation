@@ -5,7 +5,7 @@ A fully autonomous, solar-powered, and off-grid smart irrigation system designed
 ## 📸 System Architecture
 
 ```
-![System Architecture](https://github.com/salembs/smart_irrigation/blob/f0ab51059305223acde13d7fb8a72383d4a717a5/architecture.jpg)
+![System Architecture](./architecture.jpg)
 
 ```
 
